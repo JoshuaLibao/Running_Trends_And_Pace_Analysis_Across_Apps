@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd" xmlns:nax="https://www.nike.com/xmlschemas/NikeActivityExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2">
+      <Activities>
+      <Activity Sport="Running">
+      <Id>
+      2025-04-11T17:49:41.927Z
+    </Id><Lap StartTime="2025-04-11T17:49:41.927Z">
+      <TotalTimeSeconds>
+      2002
+    </TotalTimeSeconds><DistanceMeters>
+      5858.01216
+    </DistanceMeters><MaximumSpeed>
+      2.9260800000000002
+    </MaximumSpeed><Calories>
+      0
+    </Calories><Intensity>
+      Active
+    </Intensity><TriggerMethod>
+      Manual
+    </TriggerMethod><Track>
+      <Trackpoint>
+      <Time>
+      2025-04-11T17:49:41.927Z
+    </Time><DistanceMeters>
+      5858.01216
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9260800000000002
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.695902595508894
+    </nax:Pace><nax:NikeFuel>
+      2.623300613333334
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+    </Track><Notes>
+      Mean Pace: 5.695902595508895 MKM
+    </Notes>
+    </Lap><Extensions>
+      <nax:NAX>
+      <nax:ActivityType>
+      Running
+    </nax:ActivityType><nax:Tags>
+      <nax:Tag>
+      <nax:Key>
+      com.nike.name
+    </nax:Key><nax:Value>
+      Tempo run: 9:00/mile warmup 8:15/mile tempo 
+    </nax:Value><nax:Key>
+      com.nike.running.originalactivityid
+    </nax:Key><nax:Value>
+      7E23618F-326A-413D-8A6D-B87E4E8E94CE
+    </nax:Value><nax:Key>
+      com.nike.running.runtype
+    </nax:Key><nax:Value>
+      manual
+    </nax:Value><nax:Key>
+      evaluation.run.disqualified
+    </nax:Key><nax:Value>
+      true
+    </nax:Value><nax:Key>
+      evaluation.run.version
+    </nax:Key><nax:Value>
+      2.0.0
+    </nax:Value><nax:Key>
+      location
+    </nax:Key><nax:Value>
+      indoors
+    </nax:Value><nax:Key>
+      terrain
+    </nax:Key><nax:Value>
+      treadmill
+    </nax:Value>
+    </nax:Tag>
+    </nax:Tags>
+    </nax:NAX>
+    </Extensions>
+    </Activity>
+    </Activities>
+    </TrainingCenterDatabase>

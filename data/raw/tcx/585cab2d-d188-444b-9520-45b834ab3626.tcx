@@ -1,0 +1,2379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd" xmlns:nax="https://www.nike.com/xmlschemas/NikeActivityExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2">
+      <Activities>
+      <Activity Sport="Running">
+      <Id>
+      2025-11-15T23:50:19.334Z
+    </Id><Lap StartTime="2025-11-15T23:50:19.334Z">
+      <TotalTimeSeconds>
+      88.062
+    </TotalTimeSeconds><DistanceMeters>
+      248.62309452146292
+    </DistanceMeters><MaximumSpeed>
+      3.8431924871148118
+    </MaximumSpeed><Calories>
+      10
+    </Calories><Intensity>
+      Active
+    </Intensity><Cadence>
+      164
+    </Cadence><TriggerMethod>
+      Manual
+    </TriggerMethod><Track>
+      <Trackpoint>
+      <Time>
+      2025-11-15T23:50:19.334Z
+    </Time><DistanceMeters>
+      22.775839956942946
+    </DistanceMeters><Cadence>
+      164.33120727539062
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      6.536282193370594
+    </nax:NikeFuel><nax:AscentInMeters>
+      0.0343475341796875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:23.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53727405432626
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2781319281628
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      35.454704539850354
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:24.161Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.05548858642578125
+    </nax:AscentInMeters><nax:DescentInMeters>
+      0.021137237548828125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:25.312Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.6932954191299325
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.512681704349825
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:25.313Z
+    </Time><DistanceMeters>
+      7.3202107404358685
+    </DistanceMeters><Cadence>
+      168.26268196105957
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:27.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53715597602129
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2781480037097
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      34.919993908144534
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:27.868Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.784364498712971
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.404085989162738
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:27.869Z
+    </Time><DistanceMeters>
+      7.604245346039534
+    </DistanceMeters><Cadence>
+      168.80407333374023
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:28.399Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.02378082275390625
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:29.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      9.685814082364502
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:29.459Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.12154769897460938
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:30.424Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.825883337199274
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.356292442222624
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:30.425Z
+    </Time><DistanceMeters>
+      7.316463924013078
+    </DistanceMeters><Cadence>
+      168.6328125
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:30.518Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.052845001220703125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:31.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53710964295615
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27827310373628
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      34.69963247422129
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:31.578Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.10305023193359375
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:32.638Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.013210296630859375
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:32.980Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.7741172996372336
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.416043631783426
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:32.981Z
+    </Time><DistanceMeters>
+      7.78746898798272
+    </DistanceMeters><Cadence>
+      168.6328125
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:35.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53711636234253
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27844581887538
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      34.97753058094531
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:35.536Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.7741172996372336
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.416043631783426
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:35.537Z
+    </Time><DistanceMeters>
+      7.334727330133319
+    </DistanceMeters><Cadence>
+      168.6328125
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:36.876Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.095123291015625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:37.935Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.095123291015625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:38.092Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.7741172996372336
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.416043631783426
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:38.093Z
+    </Time><DistanceMeters>
+      6.902529372833669
+    </DistanceMeters><Cadence>
+      171.0103940963745
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:38.995Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.14796829223632812
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:39.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.537108055676214
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27859052130889
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      35.10882796160877
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.631885639839583
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:40.054Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1241912841796875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:40.648Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.88878629911115
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.769435652541979
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:40.649Z
+    </Time><DistanceMeters>
+      7.078522939700633
+    </DistanceMeters><Cadence>
+      166.9395875930786
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:41.115Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1268310546875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:42.175Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.13740158081054688
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:43.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53709647461671
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27873436666539
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      35.99131992738694
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:43.204Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.894871090953148
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.757308751589039
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:43.205Z
+    </Time><DistanceMeters>
+      5.755009301006794
+    </DistanceMeters><Cadence>
+      165.1925754547119
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:43.234Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.18495941162109375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:44.294Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.19817352294921875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:45.354Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.203460693359375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:45.759Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.963932223202176
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.623160521754548
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:45.760Z
+    </Time><DistanceMeters>
+      7.2026018663309515
+    </DistanceMeters><Cadence>
+      164.65493202209473
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:46.413Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.2378082275390625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:47.473Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.21402740478515625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:48.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53710674140457
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27890264878401
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      38.38664830569178
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:48.315Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.023862322351418
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.511714783927835
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:48.316Z
+    </Time><DistanceMeters>
+      6.5474988259375095
+    </DistanceMeters><Cadence>
+      164.33454036712646
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:48.533Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.22724151611328125
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:49.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.06887950608791
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:49.592Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20345687866210938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:50.652Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.221954345703125
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:50.871Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.070982346304275
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.427145058884466
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:50.872Z
+    </Time><DistanceMeters>
+      8.049318576231599
+    </DistanceMeters><Cadence>
+      164.12203788757324
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:51.711Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.19289016723632812
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:52.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53710520453282
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27905930173438
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      38.45329604763538
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:52.771Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.19289016723632812
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:53.426Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.123885681869389
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.3352357813212405
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:53.427Z
+    </Time><DistanceMeters>
+      6.607422892935574
+    </DistanceMeters><Cadence>
+      163.97080421447754
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:53.830Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.19817352294921875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:54.889Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.2061004638671875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:55.949Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.22459793090820312
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:55.982Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1471006382328772
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.295879789857987
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:55.983Z
+    </Time><DistanceMeters>
+      6.765924451872706
+    </DistanceMeters><Cadence>
+      163.31683158874512
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:57.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.537113709219675
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27923759061171
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      39.714034711010754
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:57.010Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1743927001953125
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:58.070Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20345687866210938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:58.538Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1479277677700472
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.294488278069076
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:58.539Z
+    </Time><DistanceMeters>
+      6.4256337294355035
+    </DistanceMeters><Cadence>
+      162.86091327667236
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:59.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.060938254040516
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:50:59.129Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.16646957397460938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:00.189Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.13475799560546875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:01.093Z
+    </Time><DistanceMeters>
+      5.254059014376253
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.7271062601993328
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.111484143433577
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:01.094Z
+    </Time><Cadence>
+      162.88231372833252
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:01.249Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.06869888305664062
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:02.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.537125877771985
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27937620767297
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      39.93498346302658
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:02.308Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.058132171630859375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:03.368Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.07662582397460938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:03.649Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.7026146395361805
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.166867604005497
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:03.650Z
+    </Time><DistanceMeters>
+      7.817920862231404
+    </DistanceMeters><Cadence>
+      163.2491683959961
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:04.428Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.058132171630859375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:05.487Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.07134246826171875
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:05.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53713669249434
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27953990326186
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      41.5210593258962
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:06.204Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.698799719117253
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.17558485300204
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:06.205Z
+    </Time><DistanceMeters>
+      7.33206548076123
+    </DistanceMeters><Cadence>
+      163.44836711883545
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:06.547Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.10040664672851562
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:07.606Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.140045166015625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:08.666Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1294708251953125
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:08.760Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.7042590836388323
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.163117567951409
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:08.761Z
+    </Time><DistanceMeters>
+      8.050599666777998
+    </DistanceMeters><Cadence>
+      163.84925365447998
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:09.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.015387393653905
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:09.725Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.11362075805664062
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:09.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53710644179469
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.27968673524919
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      40.265338343568146
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:10.786Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.13740158081054688
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:11.315Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.7112478660370853
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.147230902583472
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:11.316Z
+    </Time><DistanceMeters>
+      6.109189996961504
+    </DistanceMeters><Cadence>
+      163.8850450515747
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:11.845Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1109771728515625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:12.905Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.10569381713867188
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:13.871Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.705983960139001
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.159189009313468
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:13.872Z
+    </Time><DistanceMeters>
+      4.133732339832932
+    </DistanceMeters><Cadence>
+      163.80146026611328
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:13.965Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.07662582397460938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:14.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53707957902766
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2798286927114
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      41.427528796717525
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:15.024Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.09776687622070312
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:16.084Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.05548858642578125
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:16.426Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.682839234548356
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.212324037922617
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:16.427Z
+    </Time><DistanceMeters>
+      6.10875435359776
+    </DistanceMeters><Cadence>
+      163.83607864379883
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:17.144Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.07662582397460938
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:18.203Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.06341552734375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:18.982Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.6578202564213123
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.27080278525227
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:18.983Z
+    </Time><DistanceMeters>
+      8.01226445287466
+    </DistanceMeters><Cadence>
+      164.04242992401123
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:18.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53707857092147
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2799756510226
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      42.07897662278265
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:19.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      6.913225237659059
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:19.263Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.06605911254882812
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:20.323Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.058132171630859375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:21.382Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.044918060302734375
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:21.537Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.653147394732044
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.2818472504615315
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:21.538Z
+    </Time><DistanceMeters>
+      5.266497417818755
+    </DistanceMeters><Cadence>
+      164.41565036773682
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:22.442Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.036991119384765625
+    </nax:AscentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:23.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53705758387985
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.28014417854088
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      42.21549797989428
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:24.093Z
+    </Time><DistanceMeters>
+      8.233090922702104
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.6448267458952675
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.301609998663651
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:24.094Z
+    </Time><Cadence>
+      164.54764366149902
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:26.648Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.6444737479781857
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.30245116988174
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:26.649Z
+    </Time><DistanceMeters>
+      8.365440243389457
+    </DistanceMeters><Cadence>
+      164.54764366149902
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:27.740Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.018497467041015625
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:27.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53706050688378
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2803120358171
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      43.7637706277892
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:28.800Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.031707763671875
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:29.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.293675494187108
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:29.204Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.651618848901851
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.28546846903319
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:29.205Z
+    </Time><DistanceMeters>
+      9.555419181007892
+    </DistanceMeters><Cadence>
+      164.54764366149902
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:29.860Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.031707763671875
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:30.919Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.05548858642578125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:30.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53706016053023
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.28045299009185
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      41.821387223899364
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:31.759Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.664416826288391
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      6.255277515974785
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:31.760Z
+    </Time><DistanceMeters>
+      8.251442702487111
+    </DistanceMeters><Cadence>
+      172.39362716674805
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:31.979Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.052845001220703125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:33.038Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.07662582397460938
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:33.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53709869988323
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.28057752264581
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      40.54384044278413
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:34.098Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.07927322387695312
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:34.315Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.82600421819849
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.356154806989293
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:34.316Z
+    </Time><DistanceMeters>
+      8.826364645268768
+    </DistanceMeters><Cadence>
+      171.68957233428955
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:35.158Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.07134246826171875
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:36.217Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.03963470458984375
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:36.871Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.7174348196192546
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.4833783174102
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:36.872Z
+    </Time><DistanceMeters>
+      11.594315004069358
+    </DistanceMeters><Cadence>
+      172.60218143463135
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:36.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53713814156724
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2807335768834
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      39.45130778942257
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:37.277Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.060771942138671875
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:38.337Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.00792694091796875
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:39.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      9.707712556012613
+    </nax:NikeFuel>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:39.396Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.0475616455078125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:39.427Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.7017932699289613
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.502322374957072
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:39.428Z
+    </Time><DistanceMeters>
+      7.291916413232684
+    </DistanceMeters><Cadence>
+      171.54358863830566
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:40.455Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.005283355712890625
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:40.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.5371519722056
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.28090290051956
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      39.58523984439671
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:41.516Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.002643585205078125
+    </nax:DescentInMeters>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:41.982Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.8431924871148118
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.3366723687521525
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:41.983Z
+    </Time><DistanceMeters>
+      6.946603582240641
+    </DistanceMeters><Cadence>
+      171.54358863830566
+    </Cadence><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:44.538Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.8431924871148118
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.3366723687521525
+    </nax:Pace>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2025-11-15T23:51:44.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.53724781299321
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.28096304580515
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      39.61741723585874
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState>
+    </Trackpoint>
+    </Track><Notes>
+      Mean Pace: 5.90331321724136 MKM
+    </Notes>
+    </Lap><Extensions>
+      <nax:NAX>
+      <nax:ActivityType>
+      Running
+    </nax:ActivityType><nax:Tags>
+      <nax:Tag>
+      <nax:Key>
+      com.nike.name
+    </nax:Key><nax:Value>
+      Saturday Afternoon Run
+    </nax:Value><nax:Key>
+      com.nike.running.goaltype
+    </nax:Key><nax:Value>
+      freeRun
+    </nax:Value><nax:Key>
+      com.nike.running.originalactivityid
+    </nax:Key><nax:Value>
+      930CD86A-EF30-4336-8592-BE301F19FB13
+    </nax:Value><nax:Key>
+      com.nike.running.recordingappversion
+    </nax:Key><nax:Value>
+      7.72.0
+    </nax:Value><nax:Key>
+      com.nike.running.recordingsource
+    </nax:Key><nax:Value>
+      phone
+    </nax:Value><nax:Key>
+      com.nike.running.syncappversion
+    </nax:Key><nax:Value>
+      7.72.0
+    </nax:Value><nax:Key>
+      com.nike.running.syncsource
+    </nax:Key><nax:Value>
+      phone
+    </nax:Value><nax:Key>
+      com.nike.temperature
+    </nax:Key><nax:Value>
+      12.98
+    </nax:Value><nax:Key>
+      com.nike.weather
+    </nax:Key><nax:Value>
+      light-rain
+    </nax:Value><nax:Key>
+      com.nike.weathersource
+    </nax:Key><nax:Value>
+      appleWeatherKit
+    </nax:Value><nax:Key>
+      location
+    </nax:Key><nax:Value>
+      outdoors
+    </nax:Value>
+    </nax:Tag>
+    </nax:Tags>
+    </nax:NAX>
+    </Extensions>
+    </Activity>
+    </Activities>
+    </TrainingCenterDatabase>

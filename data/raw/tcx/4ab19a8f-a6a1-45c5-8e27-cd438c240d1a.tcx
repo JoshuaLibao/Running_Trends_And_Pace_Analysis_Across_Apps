@@ -1,0 +1,5908 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:ns3="http://www.garmin.com/xmlschemas/ActivityExtension/v2" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd" xmlns:nax="https://www.nike.com/xmlschemas/NikeActivityExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.garmin.com/xmlschemas/ActivityGoals/v1" xmlns:ns2="http://www.garmin.com/xmlschemas/UserProfile/v2">
+      <Activities>
+      <Activity Sport="Running">
+      <Id>
+      2023-10-03T14:06:26.655Z
+    </Id><Lap StartTime="2023-10-03T14:06:26.655Z">
+      <TotalTimeSeconds>
+      189.295
+    </TotalTimeSeconds><DistanceMeters>
+      473.20636803284276
+    </DistanceMeters><MaximumSpeed>
+      3.5302127318221657
+    </MaximumSpeed><Calories>
+      24
+    </Calories><AverageHeartRateBpm>
+      <Value>
+      165
+    </Value>
+    </AverageHeartRateBpm><MaximumHeartRateBpm>
+      <Value>
+      170
+    </Value>
+    </MaximumHeartRateBpm><Intensity>
+      Active
+    </Intensity><Cadence>
+      133
+    </Cadence><TriggerMethod>
+      Manual
+    </TriggerMethod><Track>
+      <Trackpoint>
+      <Time>
+      2023-10-03T14:06:26.655Z
+    </Time><DistanceMeters>
+      9.068062390200794
+    </DistanceMeters><Cadence>
+      110.08604764938354
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      1.8788232206807205
+    </nax:NikeFuel><nax:AscentInMeters>
+      1.2299995422363281
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:28.770Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:30.023Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430126043080755
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29020304989282
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      116.63766479492188
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:30.996Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43016233672149
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29020346898798
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      116.11068725585938
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:31.335Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      0.8822994767857185
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      18.89003349223843
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:31.336Z
+    </Time><DistanceMeters>
+      8.312396177090704
+    </DistanceMeters><Cadence>
+      158.78841876983643
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:33.900Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      1.76467373853578
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      9.444616476525379
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:33.901Z
+    </Time><DistanceMeters>
+      8.731433280743659
+    </DistanceMeters><Cadence>
+      160.8464241027832
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:33.997Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43026681714452
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29021788586144
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.79910278320312
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:36.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.5965492350493715
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:36.457Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.921894260126574
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.704062222273806
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:36.458Z
+    </Time><DistanceMeters>
+      5.979504946619272
+    </DistanceMeters><Cadence>
+      160.8464241027832
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:36.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      149
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:36.997Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430358137979574
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29022693831686
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      116.77212524414062
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:37.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      150
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:39.013Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.31192937657457
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      7.208986068320368
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:39.014Z
+    </Time><DistanceMeters>
+      9.467206509783864
+    </DistanceMeters><Cadence>
+      161.9982147216797
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:39.998Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43046352167157
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29024167999148
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.50930898450315
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:41.568Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.2359675670642436
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.150443050264287
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:41.569Z
+    </Time><DistanceMeters>
+      6.905490089207888
+    </DistanceMeters><Cadence>
+      161.4529323577881
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:43.998Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430586454762846
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29023915304754
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.73617682326585
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:44.124Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.243565532855033
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.138378274724244
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:44.125Z
+    </Time><DistanceMeters>
+      9.552673852071166
+    </DistanceMeters><Cadence>
+      161.7851686477661
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:45.854Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.45999908447265625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:46.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.151559818109389
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:46.679Z
+    </Time><DistanceMeters>
+      7.189370553009212
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.3805984211764466
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.9300936077662465
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:46.680Z
+    </Time><Cadence>
+      161.7851686477661
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:47.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43068726208596
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29020561178743
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.77450641989708
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:48.435Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.2999992370605469
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:49.235Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0748925946953976
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.420243521812404
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:49.236Z
+    </Time><DistanceMeters>
+      7.342874143272638
+    </DistanceMeters><Cadence>
+      162.2182559967041
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:51.016Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.0800018310546875
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:51.790Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0932667668087275
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.388046981754953
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:51.791Z
+    </Time><DistanceMeters>
+      8.042995129711926
+    </DistanceMeters><Cadence>
+      162.52654552459717
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:51.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43078156484349
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2901383488617
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.76712123304605
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:53.597Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20999908447265625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:54.346Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.077070113923437
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.416407832649524
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:54.347Z
+    </Time><DistanceMeters>
+      6.387640058994293
+    </DistanceMeters><Cadence>
+      162.52654552459717
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:55.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43087889117585
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29011542917296
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.4023139057681
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:56.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.829324373953286
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:56.178Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.22999954223632812
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:56.901Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.039928773623787
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.4825845958222725
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:56.902Z
+    </Time><DistanceMeters>
+      7.249316733330488
+    </DistanceMeters><Cadence>
+      162.91770458221436
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:58.758Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.0500030517578125
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:58.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430889659102725
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29027128306868
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      119.26445891335607
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:59.456Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9790773657446583
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.594573292493402
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:06:59.457Z
+    </Time><DistanceMeters>
+      8.290212192572653
+    </DistanceMeters><Cadence>
+      162.91770458221436
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:01.340Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.01999664306640625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:02.012Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0290979640514233
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.502188065378703
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:02.013Z
+    </Time><DistanceMeters>
+      8.235367697663605
+    </DistanceMeters><Cadence>
+      162.51023769378662
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:02.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430879522797554
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29043024790995
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      119.70233569387347
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:03.921Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.030002593994140625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:04.567Z
+    </Time><DistanceMeters>
+      6.9945829482749104
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0479491213286507
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.468157768788934
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:04.568Z
+    </Time><Cadence>
+      162.51023769378662
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:06.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.794188344347469
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:06.501Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1100006103515625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:07.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.4308834220157
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2905841862228
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      120.2988524865359
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:07.123Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9750367930314665
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.60217161203034
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:07.124Z
+    </Time><DistanceMeters>
+      7.681355473585427
+    </DistanceMeters><Cadence>
+      162.11857795715332
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:09.082Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.11999893188476562
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:09.678Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.026358840067146
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.507168035069126
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:09.679Z
+    </Time><DistanceMeters>
+      7.6373856868594885
+    </DistanceMeters><Cadence>
+      162.09179878234863
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:11.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430887868678056
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2907522612235
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      120.99512432143092
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:11.663Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.05999755859375
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:12.233Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.007652538110242
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.541420245683901
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:12.234Z
+    </Time><DistanceMeters>
+      7.583792764693499
+    </DistanceMeters><Cadence>
+      162.09179878234863
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:14.244Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.13000106811523438
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:14.789Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.029239283534211
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.501931378369582
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:14.790Z
+    </Time><DistanceMeters>
+      7.777850634418428
+    </DistanceMeters><Cadence>
+      162.28310108184814
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:15.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430879691474225
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2909170989258
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      120.63089952524751
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:16.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.807519973354822
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:16.824Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20999908447265625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:17.344Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9961071355174975
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.562773930575064
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:17.345Z
+    </Time><DistanceMeters>
+      8.833303016610444
+    </DistanceMeters><Cadence>
+      162.44469165802002
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:19.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430879243126206
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29108927257258
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      119.82419907581061
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:19.406Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20999908447265625
+    </nax:AscentInMeters><nax:DescentInMeters>
+      0.26999664306640625
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:19.899Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0287245204883555
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.502866488491106
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:19.900Z
+    </Time><DistanceMeters>
+      7.772870995104313
+    </DistanceMeters><Cadence>
+      162.44469165802002
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:22.455Z
+    </Time><DistanceMeters>
+      9.530545613728464
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0027116501592728
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.55053851600523
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:22.456Z
+    </Time><Cadence>
+      163.17333698272705
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:23.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430882407579034
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29125929914801
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      119.01372662652284
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:25.010Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0326621576323616
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.4957215147494525
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:25.011Z
+    </Time><DistanceMeters>
+      7.023199016228318
+    </DistanceMeters><Cadence>
+      163.25290203094482
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:26.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.8903434639594305
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:27.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43088912823237
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29141205588579
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      118.71713533252478
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:27.565Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0228736266372107
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.513517508572617
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:27.566Z
+    </Time><DistanceMeters>
+      7.362077793106437
+    </DistanceMeters><Cadence>
+      163.16275119781494
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:29.728Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.29000091552734375
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:30.121Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.009482161455151
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.53805132329077
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:30.122Z
+    </Time><DistanceMeters>
+      7.988929918967187
+    </DistanceMeters><Cadence>
+      163.1265163421631
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:30.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      163
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:31.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43088840634151
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29158300753392
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      118.05858985334635
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:32.309Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.20000076293945312
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:32.676Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0519217326098955
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.461040002626123
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:32.677Z
+    </Time><DistanceMeters>
+      10.160928829573095
+    </DistanceMeters><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:34.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43089180136157
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29172324604069
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      117.00502960663289
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:34.889Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.31999969482421875
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:35.231Z
+    </Time><DistanceMeters>
+      7.910672836005687
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.112094799822904
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.355449540809327
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:35.232Z
+    </Time><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:35.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      164
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:36.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.031596699525792
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:37.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430897395678194
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29186125523445
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.53543401509523
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:37.471Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.4399986267089844
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:37.787Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.147098925516371
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.295882671985606
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:37.788Z
+    </Time><DistanceMeters>
+      8.400498243048787
+    </DistanceMeters><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:40.051Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.4600028991699219
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:40.342Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.130324157488889
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.324262225940357
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:40.343Z
+    </Time><DistanceMeters>
+      8.052132287062705
+    </DistanceMeters><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:41.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430902691481975
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29204244265078
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.4493734491989
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:41.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      164
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:42.632Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.5099983215332031
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:42.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      164
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:42.897Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1260625500891255
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.3315205308964435
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:42.898Z
+    </Time><DistanceMeters>
+      6.369914415292442
+    </DistanceMeters><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:45.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430898339113504
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29218485606793
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.42909498419613
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:45.212Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.6100006103515625
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:45.452Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.025115599171612
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.509431332551594
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:45.453Z
+    </Time><DistanceMeters>
+      8.850759764201939
+    </DistanceMeters><Cadence>
+      163.36748600006104
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:46.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.381624443247873
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:47.793Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.5600013732910156
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:48.008Z
+    </Time><DistanceMeters>
+      6.5816812021657825
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.0106774184134126
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.535852683762374
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:48.009Z
+    </Time><Cadence>
+      165.746111869812
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:49.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43090777944681
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29232811964292
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.56381498090923
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:50.374Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.45999908447265625
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:50.563Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.044180846834074
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.4749265911714415
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:50.564Z
+    </Time><DistanceMeters>
+      7.995580801740289
+    </DistanceMeters><Cadence>
+      167.8209114074707
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:52.955Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.3400001525878906
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:53.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092040689846
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29248721120072
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.39170515723526
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:53.118Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.5302127318221657
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.721150801035139
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:53.119Z
+    </Time><DistanceMeters>
+      7.557226061820984
+    </DistanceMeters><Cadence>
+      167.29358196258545
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:55.537Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.2599983215332031
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:55.674Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.4189971381508504
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.874723783969226
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:55.675Z
+    </Time><DistanceMeters>
+      6.168952824547887
+    </DistanceMeters><Cadence>
+      167.29358196258545
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:56.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.454927051598318
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:57.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43091150767032
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29263689454221
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.01857671514153
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:58.117Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.24000167846679688
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:58.229Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.334285864697484
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.998571611129334
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:58.230Z
+    </Time><DistanceMeters>
+      8.2408118955791
+    </DistanceMeters><Cadence>
+      167.29358196258545
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:07:59.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      165
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:00.699Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.14999771118164062
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:00.784Z
+    </Time><DistanceMeters>
+      7.384756548330188
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.427348538778641
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.862845572340286
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:00.785Z
+    </Time><Cadence>
+      158.18487167358398
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:01.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430910550929504
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29279549189961
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.55881839524955
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:03.278Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.060001373291015625
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:03.340Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.2998735762354894
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.050698543936363
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:03.341Z
+    </Time><DistanceMeters>
+      8.475801007822156
+    </DistanceMeters><Cadence>
+      161.21509552001953
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:05.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430913907141516
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29295779486594
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.27415123116225
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:05.859Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.1399993896484375
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:05.895Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.06307410265307
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.441156860106942
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:05.896Z
+    </Time><DistanceMeters>
+      7.678480805829167
+    </DistanceMeters><Cadence>
+      162.25120067596436
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:06.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.762787821515257
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:06.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      167
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:08.440Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.31999969482421875
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:08.450Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9896501437085883
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.574788308170424
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:08.451Z
+    </Time><DistanceMeters>
+      7.835848382674158
+    </DistanceMeters><Cadence>
+      162.4601411819458
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:09.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43091624947264
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29312345597248
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.47664306219667
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:11.005Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9731923673464418
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.605646930118274
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:11.006Z
+    </Time><DistanceMeters>
+      7.234762126579881
+    </DistanceMeters><Cadence>
+      163.85210037231445
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:11.021Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.2599983215332031
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:11.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      167
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:12.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092280249351
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29327277701155
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.53768185619265
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:13.561Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.027154802773894
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.505719975534249
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:13.562Z
+    </Time><DistanceMeters>
+      8.621574458666146
+    </DistanceMeters><Cadence>
+      165.22486209869385
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:15.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092441325622
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2934112304787
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      113.99100690986961
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:16.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.09458374293532
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:16.116Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.131349902825616
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.322518141976811
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:16.117Z
+    </Time><DistanceMeters>
+      7.88607897143811
+    </DistanceMeters><Cadence>
+      165.22486209869385
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:18.671Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.094546863753405
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.3858181505939475
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:18.672Z
+    </Time><DistanceMeters>
+      9.875636684708297
+    </DistanceMeters><Cadence>
+      164.91690158843994
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:18.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      168
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:18.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430927748309564
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29355327324988
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.03507678955793
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:21.227Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1581166730427648
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.277406882694033
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:21.228Z
+    </Time><DistanceMeters>
+      7.960642160847783
+    </DistanceMeters><Cadence>
+      164.68676090240479
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:21.345Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.3800010681152344
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:22.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092094978613
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29372331039472
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.26948906295002
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:23.782Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1481423235271158
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.294127442114391
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:23.783Z
+    </Time><DistanceMeters>
+      8.93136756774038
+    </DistanceMeters><Cadence>
+      164.65131282806396
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:23.924Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.3999977111816406
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:24.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      168
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:25.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430917037975036
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29387124023145
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      115.10644040443003
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:26.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.347793073938547
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:26.337Z
+    </Time><DistanceMeters>
+      8.622596844099462
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.1861880306842387
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.230911203657831
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:26.338Z
+    </Time><Cadence>
+      164.75192070007324
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:26.506Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20000076293945312
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:28.892Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.215275166548977
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.1835895229319835
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:28.893Z
+    </Time><DistanceMeters>
+      8.70039651915431
+    </DistanceMeters><Cadence>
+      164.95184898376465
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:29.086Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20999908447265625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:29.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092157497746
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29404633314066
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.54827729985118
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:30.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      169
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:31.447Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.2560061947817367
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.118745379962
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:31.448Z
+    </Time><DistanceMeters>
+      9.207080906257033
+    </DistanceMeters><Cadence>
+      165.1188611984253
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:31.666Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.1399993896484375
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:32.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092646500297
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29419067207841
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.63125615566969
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:34.003Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.290977914090345
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.064350810532097
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:34.004Z
+    </Time><DistanceMeters>
+      8.463756461627781
+    </DistanceMeters><Cadence>
+      165.1188611984253
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:34.247Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.12000274658203125
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:35.999Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43093739859885
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29433166865135
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.34045767784119
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:36.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.657290645410729
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:36.558Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.3487151256134853
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.9770332923178495
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:36.559Z
+    </Time><DistanceMeters>
+      8.859338281676173
+    </DistanceMeters><Cadence>
+      165.27899265289307
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:36.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      170
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:36.828Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.20999908447265625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:37.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      170
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:39.113Z
+    </Time><DistanceMeters>
+      8.561505504883826
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.3624068557451494
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.956766798815349
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:39.114Z
+    </Time><Cadence>
+      165.49006462097168
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:39.409Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.04000091552734375
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:40.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430936461152214
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29449822939235
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      114.14243675395846
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:41.668Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.3942545251942353
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.910258362464117
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:41.669Z
+    </Time><DistanceMeters>
+      7.742865463718772
+    </DistanceMeters><Cadence>
+      165.4156494140625
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:44.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430925643128326
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2946554960151
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      113.66926564089954
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:44.224Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.351903633867565
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      4.972298874665432
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:44.225Z
+    </Time><DistanceMeters>
+      7.069194361567497
+    </DistanceMeters><Cadence>
+      165.67317008972168
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:46.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      8.391894766380736
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:46.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      169
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:46.779Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.3106919554775525
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.034194328799332
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:46.780Z
+    </Time><DistanceMeters>
+      8.044657051563263
+    </DistanceMeters><Cadence>
+      165.82504749298096
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:47.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      169
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:48.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43092553518637
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29482009727869
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      112.54338334035128
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:49.334Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.2843107126945545
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.074631520777398
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:49.335Z
+    </Time><DistanceMeters>
+      8.171469258144498
+    </DistanceMeters><Cadence>
+      165.74426651000977
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:49.731Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.4600028991699219
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:51.889Z
+    </Time><DistanceMeters>
+      6.376445338129997
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.25396964037657
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.121949037219011
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:51.890Z
+    </Time><Cadence>
+      165.80841064453125
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:52.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430935798425324
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29497227882047
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      112.90091540198773
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:52.313Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.4199981689453125
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:54.444Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.171980862648586
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.254340233550494
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:54.445Z
+    </Time><DistanceMeters>
+      7.363293164409697
+    </DistanceMeters><Cadence>
+      165.73651313781738
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:54.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      169
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:54.893Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.7099990844726562
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:56.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43091957247734
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29512306256396
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      113.2423443980515
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      7.923984888976024
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:56.999Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      3.132323053054995
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.3208645418650065
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:57.000Z
+    </Time><DistanceMeters>
+      4.881414155475795
+    </DistanceMeters><Cadence>
+      165.73651313781738
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:57.475Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.8700027465820312
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:58.775Z
+    </Time><HeartRateBpm>
+      <Value>
+      169
+    </Value>
+    </HeartRateBpm><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:59.555Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      2.9935173817793856
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      5.567586401238726
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:08:59.556Z
+    </Time><DistanceMeters>
+      4.01853948738426
+    </DistanceMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:00.054Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.9199981689453125
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:02.111Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:02.636Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.7400016784667969
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:04.666Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:05.216Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.04000091552734375
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:06.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      0.37023513885781406
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:07.221Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:09.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.43089467179871
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29519096142755
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      111.88301641028374
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:09.776Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:10.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430894994160916
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2951863483802
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      111.88191219605505
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:11.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430894216181564
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2951840345108
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      111.95249892026186
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:12.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.4308921038865
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.2951859884173
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      111.74158993177116
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:12.332Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:13.000Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430890555055186
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29520093205323
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      111.69650433585048
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:14.357Z
+    </Time><Cadence>
+      0
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:14.887Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:15.540Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.009998321533203125
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:16.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      0.37023513885781406
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:17.442Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:18.119Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.030002593994140625
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:19.002Z
+    </Time><Position>
+      <LatitudeDegrees>
+      47.430875860058116
+    </LatitudeDegrees><LongitudeDegrees>
+      -122.29519865747086
+    </LongitudeDegrees>
+    </Position><AltitudeMeters>
+      112.10566329496608
+    </AltitudeMeters><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:19.997Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:20.699Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.029998779296875
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:22.553Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:25.108Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:26.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      0.37023513885781406
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:27.663Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:28.442Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:DescentInMeters>
+      0.049999237060546875
+    </nax:DescentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:30.218Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:32.774Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:35.329Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:36.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      1.4517153536241303
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:37.883Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:40.438Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      0.5408759772520865
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      30.814211330555764
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:40.439Z
+    </Time><DistanceMeters>
+      2.0092697432264686
+    </DistanceMeters><Cadence>
+      0
+    </Cadence><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:41.347Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.04000091552734375
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:42.994Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <ns3:Speed>
+      0.5574579077569574
+    </ns3:Speed><nax:Nax>
+      <nax:Pace>
+      29.897623542068516
+    </nax:Pace><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:42.995Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:45.550Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:46.000Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:NikeFuel>
+      0.13827433158071373
+    </nax:NikeFuel><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:46.508Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.009998321533203125
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:49.089Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.04000091552734375
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+<Trackpoint>
+      <Time>
+      2023-10-03T14:09:51.668Z
+    </Time><SensorState>
+      Present
+    </SensorState><Extensions>
+      <TPX xmlns="http://www.garmin.com/xmlschemas/ActivityExtension/v2">
+      <nax:Nax>
+      <nax:AscentInMeters>
+      0.01000213623046875
+    </nax:AscentInMeters><nax:Moments>
+      <nax:Halt xsi:type="nax:Halt_t" action="auto_pause">
+      
+    </nax:Halt>
+    </nax:Moments>
+    </nax:Nax>
+    </TPX>
+    </Extensions>
+    </Trackpoint>
+    </Track><Notes>
+      Mean Pace: 6.667105262724826 MKM
+    </Notes>
+    </Lap><Extensions>
+      <nax:NAX>
+      <nax:ActivityType>
+      Running
+    </nax:ActivityType><nax:Tags>
+      <nax:Tag>
+      <nax:Key>
+      com.nike.running.goaltype
+    </nax:Key><nax:Value>
+      freeRun
+    </nax:Value><nax:Key>
+      com.nike.running.originalactivityid
+    </nax:Key><nax:Value>
+      27C16818-827F-49CE-AFFC-14A939B2391E
+    </nax:Value><nax:Key>
+      com.nike.running.recordingappversion
+    </nax:Key><nax:Value>
+      7.17.0
+    </nax:Value><nax:Key>
+      com.nike.running.recordingsource
+    </nax:Key><nax:Value>
+      watch
+    </nax:Value><nax:Key>
+      com.nike.running.syncappversion
+    </nax:Key><nax:Value>
+      7.17.0
+    </nax:Value><nax:Key>
+      com.nike.running.syncsource
+    </nax:Key><nax:Value>
+      watch
+    </nax:Value><nax:Key>
+      location
+    </nax:Key><nax:Value>
+      outdoors
+    </nax:Value>
+    </nax:Tag>
+    </nax:Tags>
+    </nax:NAX>
+    </Extensions>
+    </Activity>
+    </Activities>
+    </TrainingCenterDatabase>
