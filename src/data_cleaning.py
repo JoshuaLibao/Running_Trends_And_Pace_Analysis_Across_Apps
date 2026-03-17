@@ -37,7 +37,7 @@ strava_raw['activity_date'] = pd.to_datetime(
 )
 strava_raw = strava_raw.rename(columns={
     'activity_date':'timestamp', 
-    'elapsed_time':'total_time_s',
+    'elapsed_time':'total_time_min',
     'distance':'distance_miles',
     'average_heart_rate':'avg_hr_bpm',
     'max_heart_rate.1':'max_hr_bpm'
@@ -45,11 +45,14 @@ strava_raw = strava_raw.rename(columns={
 strava_raw['activity_type'] = strava_raw['activity_type'].replace('Run','Running')
 strava_raw['source'] = 'Strava'
 
+# standardize time units: seconds -> minutes
+strava_raw['total_time_min'] = strava_raw['total_time_min'] / 60
+
 # validate: date, time, distance and activity type
 now = pd.Timestamp.now()
 clean_strava_data = strava_raw[
     (strava_raw['timestamp'] <= now) &
-    (strava_raw['total_time_s'] > 0) &
+    (strava_raw['total_time_min'] > 0) &
     (strava_raw['distance_miles'] > 0) &
     (strava_raw['activity_type'] == 'Running')
 ]
@@ -69,7 +72,8 @@ nike_raw = nike_raw.rename(columns={
     'start_time_utc':'timestamp',
     'average_cadence_rpm':'average_cadence',
     'sport':'activity_type',
-    'distance_m':'distance_miles'
+    'distance_m':'distance_miles',
+    'total_time_s':'total_time_min'
     })
 nike_raw['timestamp'] = pd.to_datetime(
     nike_raw['timestamp']
@@ -86,10 +90,13 @@ nike_raw['start_time'] = nike_raw['timestamp'].dt.time
 # standardize distance units: meters -> miles
 nike_raw['distance_miles'] = nike_raw['distance_miles'] / 1609.34
 
+# standardize time units: seconds -> minutes
+nike_raw['total_time_min'] = nike_raw['total_time_min'] / 60
+
 # validate nike run club data
 clean_nike_data = nike_raw[
     (nike_raw['timestamp'] <= now) &
-    (nike_raw['total_time_s'] > 0) &
+    (nike_raw['total_time_min'] > 0) &
     (nike_raw['distance_miles'] > 0) &
     (nike_raw['activity_type'] == 'Running')
 ]
@@ -101,18 +108,18 @@ nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
 clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
 
 combined_datasets = pd.read_sql("""
-    SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source
+    SELECT timestamp, distance_miles, total_time_min, activity_type, total_time_min/distance_miles AS pace, source
     FROM clean_strava_data
     UNION ALL
-    SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source
+    SELECT timestamp, distance_miles, total_time_min, activity_type, total_time_min/distance_miles AS pace, source
     FROM clean_nike_data
 """, conn)
 combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
 
 combined_datasets_final = pd.read_sql("""
-    SELECT timestamp, distance_miles, total_time_s, activity_type, pace
+    SELECT timestamp, distance_miles, total_time_min, activity_type, pace
     FROM ( 
-        SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source, 
+        SELECT timestamp, distance_miles, total_time_min, activity_type, total_time_min/distance_miles AS pace, source, 
         ROW_NUMBER() OVER(
             PARTITION BY(timestamp) 
             ORDER BY CASE 
@@ -125,3 +132,17 @@ combined_datasets_final = pd.read_sql("""
     WHERE row_number = 1
 """, conn)
 combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
+
+dashboard_overview = pd.read_sql("""
+    SELECT COUNT(activity_type) AS total_runs, 
+        SUM(distance_miles) AS total_distance_miles, 
+        SUM(total_time_min) AS total_duration_min,
+        AVG(pace) AS average_pace, 
+        MIN(pace) AS fastest_pace, 
+        MAX(pace) AS slowest_pace,
+        MIN(timestamp) AS first_run_date,
+        MAX(timestamp) AS last_run_date
+    FROM combined_datasets_final
+""", conn)
+
+dashboard_overview.to_sql('dashboard_overview', conn, if_exists='replace', index=False)
