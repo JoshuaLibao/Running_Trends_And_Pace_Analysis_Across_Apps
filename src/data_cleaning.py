@@ -42,7 +42,8 @@ strava_raw = strava_raw.rename(columns={
     'average_heart_rate':'avg_hr_bpm',
     'max_heart_rate.1':'max_hr_bpm'
     })
-strava_raw['activity_type'] = strava_raw['activity_type'].replace('Run','running')
+strava_raw['activity_type'] = strava_raw['activity_type'].replace('Run','Running')
+strava_raw['source'] = 'Strava'
 
 # validate: date, time, distance and activity type
 now = pd.Timestamp.now()
@@ -50,7 +51,7 @@ clean_strava_data = strava_raw[
     (strava_raw['timestamp'] <= now) &
     (strava_raw['total_time_s'] > 0) &
     (strava_raw['distance_miles'] > 0) &
-    (strava_raw['activity_type'] == 'running')
+    (strava_raw['activity_type'] == 'Running')
 ]
 strava_raw.to_sql('strava_raw', conn, if_exists='replace', index=False)
 clean_strava_data.to_sql('clean_strava_data', conn, if_exists='replace', index=False)
@@ -73,6 +74,8 @@ nike_raw = nike_raw.rename(columns={
 nike_raw['timestamp'] = pd.to_datetime(
     nike_raw['timestamp']
 )
+nike_raw['source'] = 'Nike'
+
 # convert timestamp column from: timezone-aware -> timezone-native
 nike_raw['timestamp'] = nike_raw['timestamp'].dt.tz_localize(None)
 
@@ -95,10 +98,30 @@ clean_nike_data = nike_raw[
 clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
 nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
-clean_nike_data.to_sql('nike_clean_data', conn, if_exists='replace', index=False)
+clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
 
 combined_datasets = pd.read_sql("""
-    SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace
-    FROM 
-
+    SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source
+    FROM clean_strava_data
+    UNION ALL
+    SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source
+    FROM clean_nike_data
 """, conn)
+combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
+
+combined_datasets_final = pd.read_sql("""
+    SELECT timestamp, distance_miles, total_time_s, activity_type, pace
+    FROM ( 
+        SELECT timestamp, distance_miles, total_time_s, activity_type, total_time_s/distance_miles AS pace, source, 
+        ROW_NUMBER() OVER(
+            PARTITION BY(timestamp) 
+            ORDER BY CASE 
+                WHEN source = 'Strava' THEN 0
+                ELSE 1
+            END 
+            ) AS row_number
+        FROM combined_datasets 
+        )
+    WHERE row_number = 1
+""", conn)
+combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
