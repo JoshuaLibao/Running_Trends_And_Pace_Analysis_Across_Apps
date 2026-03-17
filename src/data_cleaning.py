@@ -12,93 +12,95 @@ if str(_THIS_DIR) not in sys.path:
 
 from tcx_to_csv import write_summary_csv
 
+strava_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\activities.csv'
 db_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\strava_data.db'
 conn = sqlite3.connect(db_path)
 
-strava_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\activities.csv'
 strava_raw = pd.read_csv(strava_path)
+clean_strava_data = strava_raw.copy()
 
 # confirm all values are whole numbers in duplicate column -> clear to delete column
-elapsed_time_check = (strava_raw['Elapsed Time.1'] % 1 == 0).all()
-strava_raw = strava_raw.drop(strava_raw.columns[15], axis=1)
+elapsed_time_check = (clean_strava_data['Elapsed Time.1'] % 1 == 0).all()
+clean_strava_data = clean_strava_data.drop(clean_strava_data.columns[15], axis=1)
 
 # standardize columns
-strava_raw.columns = (
-    strava_raw.columns
+clean_strava_data.columns = (
+    clean_strava_data.columns
         .str.strip()
         .str.lower()
         .str.replace(" ", "_")
         .str.replace("-", "_")
 )
 
-strava_raw['activity_date'] = pd.to_datetime(
-    strava_raw['activity_date'],
+clean_strava_data['activity_date'] = pd.to_datetime(
+    clean_strava_data['activity_date'],
     format= "%b %d, %Y, %I:%M:%S %p",
 )
-strava_raw = strava_raw.rename(columns={
+clean_strava_data = clean_strava_data.rename(columns={
     'activity_date':'timestamp', 
     'elapsed_time':'total_time_min',
     'distance':'distance_miles',
     'average_heart_rate':'avg_hr_bpm',
     'max_heart_rate.1':'max_hr_bpm'
     })
-strava_raw['activity_type'] = strava_raw['activity_type'].replace('Run','Running')
-strava_raw['source'] = 'Strava'
+clean_strava_data['activity_type'] = clean_strava_data['activity_type'].replace('Run','Running')
+clean_strava_data['source'] = 'Strava'
 
 # standardize time units: seconds -> minutes
-strava_raw['total_time_min'] = strava_raw['total_time_min'] / 60
+clean_strava_data['total_time_min'] = clean_strava_data['total_time_min'] / 60
 
 # validate: date, time, distance and activity type
 now = pd.Timestamp.now()
-clean_strava_data = strava_raw[
-    (strava_raw['timestamp'] <= now) &
-    (strava_raw['total_time_min'] > 0) &
-    (strava_raw['distance_miles'] > 0) &
-    (strava_raw['activity_type'] == 'Running')
+clean_strava_data = clean_strava_data[
+    (clean_strava_data['timestamp'] <= now) &
+    (clean_strava_data['total_time_min'] > 0) &
+    (clean_strava_data['distance_miles'] > 0) &
+    (clean_strava_data['activity_type'] == 'Running')
 ]
 strava_raw.to_sql('strava_raw', conn, if_exists='replace', index=False)
 clean_strava_data.to_sql('clean_strava_data', conn, if_exists='replace', index=False)
 
 input_dir = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\tcx'
-output_csv = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\processed\nrc_tcx_summary.csv'
+output_csv = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\nrc_tcx_summary.csv'
 
 write_summary_csv(input_dir, output_csv)
 
-nike_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\processed\nrc_tcx_summary.csv'
+nike_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\nrc_tcx_summary.csv'
 nike_raw = pd.read_csv(nike_path)
+clean_nike_data = nike_raw.copy()
 
 # standardize nike run club data
-nike_raw = nike_raw.rename(columns={
+clean_nike_data = clean_nike_data.rename(columns={
     'start_time_utc':'timestamp',
     'average_cadence_rpm':'average_cadence',
     'sport':'activity_type',
     'distance_m':'distance_miles',
     'total_time_s':'total_time_min'
     })
-nike_raw['timestamp'] = pd.to_datetime(
-    nike_raw['timestamp']
+clean_nike_data['timestamp'] = pd.to_datetime(
+    clean_nike_data['timestamp']
 )
-nike_raw['source'] = 'Nike'
+clean_nike_data['source'] = 'Nike'
 
 # convert timestamp column from: timezone-aware -> timezone-native
-nike_raw['timestamp'] = nike_raw['timestamp'].dt.tz_localize(None)
+clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.tz_localize(None)
 
 # separate start date and time
-nike_raw['start_date'] = nike_raw['timestamp'].dt.date
-nike_raw['start_time'] = nike_raw['timestamp'].dt.time
+clean_nike_data['start_date'] = clean_nike_data['timestamp'].dt.date
+clean_nike_data['start_time'] = clean_nike_data['timestamp'].dt.time
 
 # standardize distance units: meters -> miles
-nike_raw['distance_miles'] = nike_raw['distance_miles'] / 1609.34
+clean_nike_data['distance_miles'] = clean_nike_data['distance_miles'] / 1609.34
 
 # standardize time units: seconds -> minutes
-nike_raw['total_time_min'] = nike_raw['total_time_min'] / 60
+clean_nike_data['total_time_min'] = clean_nike_data['total_time_min'] / 60
 
 # validate nike run club data
-clean_nike_data = nike_raw[
-    (nike_raw['timestamp'] <= now) &
-    (nike_raw['total_time_min'] > 0) &
-    (nike_raw['distance_miles'] > 0) &
-    (nike_raw['activity_type'] == 'Running')
+clean_nike_data = clean_nike_data[
+    (clean_nike_data['timestamp'] <= now) &
+    (clean_nike_data['total_time_min'] > 0) &
+    (clean_nike_data['distance_miles'] > 0) &
+    (clean_nike_data['activity_type'] == 'Running')
 ]
 
 # standardize timestamp entry format
@@ -131,6 +133,12 @@ combined_datasets_final = pd.read_sql("""
         )
     WHERE row_number = 1
 """, conn)
+
+# assign week number to run entries
+combined_datasets_final['week'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.isocalendar().week
+combined_datasets_final['week'] = combined_datasets_final['week'].astype(int)
+combined_datasets_final['year'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.year
+combined_datasets_final['year'] = combined_datasets_final['year'].astype(int)
 combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
 
 dashboard_overview = pd.read_sql("""
@@ -144,5 +152,12 @@ dashboard_overview = pd.read_sql("""
         MAX(timestamp) AS last_run_date
     FROM combined_datasets_final
 """, conn)
-
 dashboard_overview.to_sql('dashboard_overview', conn, if_exists='replace', index=False)
+
+weekly_summary = pd.read_sql("""
+    SELECT week, year, COUNT(activity_type) AS total_runs, SUM(distance_miles) AS total_distance, AVG(pace) AS average_pace
+    FROM combined_datasets_final
+    GROUP BY year,week
+    ORDER BY week ASC
+""", conn)
+weekly_summary.to_sql('weekly_summary', conn, if_exists='replace', index=False)
