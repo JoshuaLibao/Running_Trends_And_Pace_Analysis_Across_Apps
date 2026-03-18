@@ -3,6 +3,7 @@ import sqlite3
 from datetime import datetime
 import sys
 from pathlib import Path
+from pandas.core.series import pd_array
 
 # Ensure local `src/` modules (like `tcx_to_csv.py`) are importable even when
 # running this script from a different working directory.
@@ -137,6 +138,7 @@ combined_datasets_final = pd.read_sql("""
 # assign week number to run entries
 combined_datasets_final['week'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.isocalendar().week
 combined_datasets_final['week'] = combined_datasets_final['week'].astype(int)
+combined_datasets_final['month'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.month.astype(int)
 combined_datasets_final['year'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.year
 combined_datasets_final['year'] = combined_datasets_final['year'].astype(int)
 combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
@@ -154,10 +156,42 @@ dashboard_overview = pd.read_sql("""
 """, conn)
 dashboard_overview.to_sql('dashboard_overview', conn, if_exists='replace', index=False)
 
+# !!!!!!!!!!reformat output later!!!!!!!!!!!!!!!
 weekly_summary = pd.read_sql("""
-    SELECT week, year, COUNT(activity_type) AS total_runs, SUM(distance_miles) AS total_distance, AVG(pace) AS average_pace
+    SELECT year, week, COUNT(activity_type) AS total_runs, SUM(distance_miles) AS total_distance, AVG(pace) AS average_pace
     FROM combined_datasets_final
-    GROUP BY year,week
-    ORDER BY week ASC
+    GROUP BY year, week
+    ORDER BY year, week
 """, conn)
 weekly_summary.to_sql('weekly_summary', conn, if_exists='replace', index=False)
+
+# !!!!!!!!!!reformat output later!!!!!!!!!!!!!!!!
+monthly_summary = pd.read_sql("""
+    SELECT year, month, COUNT(activity_type) AS total_runs, SUM(distance_miles) AS total_distance, AVG(pace) AS average_pace
+    FROM combined_datasets_final
+    GROUP BY year, month
+    ORDER BY year, month
+""", conn)
+monthly_summary.to_sql('monthly_summary', conn, if_exists='replace', index=False)
+
+# combined datasets table with row number column
+source_main = pd.read_sql("""
+    SELECT source, row_number
+    FROM (
+        SELECT timestamp, distance_miles, total_time_min, activity_type, total_time_min/distance_miles AS pace, source,
+        ROW_NUMBER() OVER(
+            PARTITION BY(timestamp) 
+            ) AS row_number
+        FROM combined_datasets 
+        )
+""", conn)
+source_main.to_sql('source_main', conn, if_exists='replace', index=False)
+
+source_comparison_table = pd.read_sql("""
+    SELECT 
+    SUM(CASE WHEN source = 'Nike' THEN 1 ELSE 0 END) AS total_runs_nike,
+    SUM(CASE WHEN source = 'Strava' THEN 1 ELSE 0 END) AS total_runs_strava,
+    SUM(CASE WHEN row_number > 1 THEN 1 ELSE 0 END) AS duplicate_runs
+    FROM source_main
+""", conn)
+source_comparison_table.to_sql('source_comparison_table', conn, if_exists='replace', index=False)
