@@ -188,10 +188,28 @@ source_main = pd.read_sql("""
 source_main.to_sql('source_main', conn, if_exists='replace', index=False)
 
 source_comparison_table = pd.read_sql("""
-    SELECT 
-    SUM(CASE WHEN source = 'Nike' THEN 1 ELSE 0 END) AS total_runs_nike,
-    SUM(CASE WHEN source = 'Strava' THEN 1 ELSE 0 END) AS total_runs_strava,
-    SUM(CASE WHEN row_number > 1 THEN 1 ELSE 0 END) AS duplicate_runs
-    FROM source_main
+    SELECT, total_runs_nike, total_runs_strava, duplicate runs, SUM(mismatched_distance) AS total_mismatched_distance,
+    FROM (
+        SUM(CASE WHEN source = 'Nike' THEN 1 ELSE 0 END) AS total_runs_nike,
+        SUM(CASE WHEN source = 'Strava' THEN 1 ELSE 0 END) AS total_runs_strava,
+        SUM(CASE WHEN row_number > 1 THEN 1 ELSE 0 END) AS duplicate_runs,
+        first_value(distance_miles) OVER ( 
+        PARTITION BY(timestamp) 
+            ORDER BY CASE 
+                WHEN source = 'Strava' THEN 0
+                ELSE 1
+            END
+            ) AS strava_distance,
+        last_value(distance_miles) OVER ( 
+        PARTITION BY(timestamp) 
+            ORDER BY CASE 
+                WHEN source = 'Strava' THEN 0
+                ELSE 1
+            END
+            ) AS nike_distance,
+        (strava_distance - nike_distance) AS mismatched_distance
+        FROM source_main
+        )
 """, conn)
 source_comparison_table.to_sql('source_comparison_table', conn, if_exists='replace', index=False)
+
