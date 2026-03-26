@@ -187,12 +187,11 @@ source_main = pd.read_sql("""
 """, conn)
 source_main.to_sql('source_main', conn, if_exists='replace', index=False)
 
+#source comparison table with cte implementation
 source_comparison_table = pd.read_sql("""
-    SELECT, total_runs_nike, total_runs_strava, duplicate runs, SUM(mismatched_distance) AS total_mismatched_distance,
-    FROM (
-        SUM(CASE WHEN source = 'Nike' THEN 1 ELSE 0 END) AS total_runs_nike,
-        SUM(CASE WHEN source = 'Strava' THEN 1 ELSE 0 END) AS total_runs_strava,
-        SUM(CASE WHEN row_number > 1 THEN 1 ELSE 0 END) AS duplicate_runs,
+    WITH 
+    mismatched_metrics AS (
+        SELECT 
         first_value(distance_miles) OVER ( 
         PARTITION BY(timestamp) 
             ORDER BY CASE 
@@ -207,9 +206,43 @@ source_comparison_table = pd.read_sql("""
                 ELSE 1
             END
             ) AS nike_distance,
-        (strava_distance - nike_distance) AS mismatched_distance
+        (strava_distance - nike_distance) AS mismatched_distance,
+        first_value(total_time_min) OVER ( 
+        PARTITION BY(timestamp) 
+            ORDER BY CASE 
+                WHEN source = 'Strava' THEN 0
+                ELSE 1
+            END
+            ) AS strava_duration,
+        last_value(total_time_min) OVER ( 
+        PARTITION BY(timestamp) 
+            ORDER BY CASE 
+                WHEN source = 'Strava' THEN 0
+                ELSE 1
+            END
+            ) AS nike_duration,
+        (strava_duration - nike_duration) AS mismatched_duration
+        FROM combined_datasets_final
+    ),
+    total_and_dupes AS (
+        SELECT 
+        SUM(CASE WHEN source = 'Nike' THEN 1 ELSE 0 END) AS total_runs_nike,
+        SUM(CASE WHEN source = 'Strava' THEN 1 ELSE 0 END) AS total_runs_strava,
+        SUM(CASE WHEN row_number > 1 THEN 1 ELSE 0 END) AS duplicate_runs
         FROM source_main
-        )
+    ),
+    raw_source_comparison_table AS (
+        SELECT *
+        FROM mismatched_metrics
+        CROSS JOIN total_and_dupes 
+    )
+    SELECT 
+    total_runs_nike, 
+    total_runs_strava, 
+    duplicate runs, 
+    SUM(mismatched_distance) AS total_mismatched_distance, 
+    SUM(mismatched_duration) AS total_mismatched_duration
+    FROM raw_source_comparison_table
 """, conn)
 source_comparison_table.to_sql('source_comparison_table', conn, if_exists='replace', index=False)
 
