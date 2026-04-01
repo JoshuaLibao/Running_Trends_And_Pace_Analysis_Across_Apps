@@ -138,23 +138,30 @@ combined_datasets_final = pd.read_sql("""
         total_time_min, 
         activity_type, 
         pace, source, 
-        row_number
+        row_number,
+        distance_bucket
     FROM ( 
         SELECT 
-        timestamp, 
-        distance_miles, 
-        total_time_min, 
-        activity_type, 
-        total_time_min/distance_miles AS pace, 
-        source, 
-        ROW_NUMBER() OVER(
-            PARTITION BY(timestamp) 
-            ORDER BY CASE 
-                WHEN source = 'Strava' THEN 0
-                ELSE 1
-            END 
-            ) AS row_number
-        FROM combined_datasets 
+            timestamp, 
+            distance_miles, 
+            total_time_min, 
+            activity_type, 
+            total_time_min/distance_miles AS pace, 
+            source,
+        CASE 
+            WHEN 0 <= distance_miles AND distance_miles < 3 THEN '0-3'
+            WHEN 3 <= distance_miles AND distance_miles < 6 THEN '3-6'
+            WHEN 6 <= distance_miles AND distance_miles < 10 THEN '6-10'
+            ELSE '10+'
+        END AS distance_bucket,
+            ROW_NUMBER() OVER(
+                PARTITION BY(timestamp) 
+                ORDER BY CASE 
+                    WHEN source = 'Strava' THEN 0
+                    ELSE 1
+                END 
+                ) AS row_number
+            FROM combined_datasets 
         )
     WHERE row_number = 1
 """, conn)
@@ -278,3 +285,17 @@ source_comparison_table = pd.read_sql("""
     FROM raw_source_comparison_table
 """, conn)
 source_comparison_table.to_sql('source_comparison_table', conn, if_exists='replace', index=False)
+
+# distance bucketing (0-3 miles, 3-6 miles, 6-10 miles, 10+ miles)
+# performance metrics for every bucket: pace, avg pace, min pace, max pace, amount of runs
+performance_analysis = pd.read_sql("""
+    SELECT
+        distance_bucket,  
+        AVG(pace) AS average_pace, 
+        MIN(pace) AS fastest_pace, 
+        MAX(pace) AS slowest_pace, 
+        COUNT(timestamp) AS run_amount
+    FROM combined_datasets_final
+    GROUP BY distance_bucket
+""", conn)
+performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',index=False)
