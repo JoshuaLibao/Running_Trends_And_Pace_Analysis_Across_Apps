@@ -13,8 +13,8 @@ if str(_THIS_DIR) not in sys.path:
 
 from tcx_to_csv import write_summary_csv
 
-strava_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\activities.csv'
-db_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\strava_data.db'
+strava_path = r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_strava.csv"
+db_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db'
 conn = sqlite3.connect(db_path)
 
 strava_raw = pd.read_csv(strava_path)
@@ -60,13 +60,14 @@ clean_strava_data = clean_strava_data[
 ]
 strava_raw.to_sql('strava_raw', conn, if_exists='replace', index=False)
 clean_strava_data.to_sql('clean_strava_data', conn, if_exists='replace', index=False)
+clean_strava_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv', index=False)
 
-input_dir = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\tcx'
-output_csv = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\nrc_tcx_summary.csv'
+input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
+output_csv = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 
 write_summary_csv(input_dir, output_csv)
 
-nike_path = r'C:\Users\12063\Downloads\sqlite\strava_nike_performance_analysis\data\raw\nrc_tcx_summary.csv'
+nike_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 nike_raw = pd.read_csv(nike_path)
 clean_nike_data = nike_raw.copy()
 
@@ -109,6 +110,7 @@ clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%
 
 nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
 clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
+clean_nike_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_nike_data.csv', index=False)
 
 combined_datasets = pd.read_sql("""
     SELECT 
@@ -173,6 +175,7 @@ combined_datasets_final['month'] = pd.to_datetime(combined_datasets_final['times
 combined_datasets_final['year'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.year
 combined_datasets_final['year'] = combined_datasets_final['year'].astype(int)
 combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
+combined_datasets_final.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\combined_datasets_final.csv', index=False)
 
 dashboard_overview = pd.read_sql("""
     SELECT 
@@ -227,7 +230,6 @@ monthly_summary = pd.read_sql("""
 """, conn)
 monthly_summary.to_sql('monthly_summary', conn, if_exists='replace', index=False)
 
-# combined datasets table with row number column
 source_main = pd.read_sql("""
     SELECT 
         source, 
@@ -286,8 +288,6 @@ source_comparison_table = pd.read_sql("""
 """, conn)
 source_comparison_table.to_sql('source_comparison_table', conn, if_exists='replace', index=False)
 
-# distance bucketing (0-3 miles, 3-6 miles, 6-10 miles, 10+ miles)
-# performance metrics for every bucket: pace, avg pace, min pace, max pace, amount of runs
 performance_analysis = pd.read_sql("""
     SELECT
         distance_bucket,  
