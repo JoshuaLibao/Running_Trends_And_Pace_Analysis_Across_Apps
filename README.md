@@ -21,6 +21,7 @@ This is a project that analyzes a database of tracked runs, which consists of di
 ## 3️⃣ Project Structure
 
 **Brief description of repo structure:**
+```
 run_performance_analysis/ # Main project folder
 │
 ├── README.md # Project overview and documentation
@@ -43,6 +44,7 @@ run_performance_analysis/ # Main project folder
 │ └── table_schemas.sql
 │
 └── runs_summary.db # SQLite database of combined runs (output from script)
+```
 
 ---
 
