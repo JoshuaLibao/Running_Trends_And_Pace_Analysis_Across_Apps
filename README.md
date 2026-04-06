@@ -54,7 +54,7 @@ To begin the project I imported two datasets of logged activities from separate 
 
 ---
 
-## 5️⃣ Next Steps / Future Work (Optional)
+## 5️⃣ Next Steps / Future Work
 
 - Implementing API ingestion  
 - Scaling to multiple sources  
