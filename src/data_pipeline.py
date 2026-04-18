@@ -3,25 +3,55 @@ import sqlite3
 from datetime import datetime
 import sys
 from pathlib import Path
-from pandas.core.series import pd_array
-
+import requests
+import os
+from dotenv import load_dotenv
+ 
 # Ensure local `src/` modules (like `tcx_to_csv.py`) are importable even when
 # running this script from a different working directory.
 _THIS_DIR = Path(__file__).resolve().parent
 if str(_THIS_DIR) not in sys.path:
     sys.path.insert(0, str(_THIS_DIR))
-
+ 
 from tcx_to_csv import write_summary_csv
-
-strava_path = r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_strava.csv"
+ 
+load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\.env.txt'))
+ 
 db_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db'
 conn = sqlite3.connect(db_path)
-
-strava_raw = pd.read_csv(strava_path)
+ 
+def get_access_token():
+    response = requests.post('https://www.strava.com/oauth/token', data={
+        'client_id': os.getenv('STRAVA_CLIENT_ID'),
+        'client_secret': os.getenv('STRAVA_CLIENT_SECRET'),
+        'refresh_token': os.getenv('STRAVA_REFRESH_TOKEN'),
+        'grant_type': 'refresh_token'
+    })
+    return response.json()['access_token']
+ 
+def get_activities(access_token):
+    activities = []
+    page = 1
+    while True:
+        response = requests.get(
+            'https://www.strava.com/api/v3/athlete/activities',
+            headers={'Authorization': f'Bearer {access_token}'},
+            params={'per_page': 200, 'page': page}
+        )
+        data = response.json()
+        if not data:
+            break
+        activities.extend(data)
+        page += 1
+    return activities
+ 
+access_token = get_access_token()
+activities = get_activities(access_token)
+strava_raw = pd.DataFrame(activities)
 clean_strava_data = strava_raw.copy()
 
 # confirm all values are whole numbers in duplicate column -> clear to delete column
-elapsed_time_check = (clean_strava_data['Elapsed Time.1'] % 1 == 0).all()
+elapsed_time_check = (clean_strava_data['elapsed_time'] % 1 == 0).all()
 clean_strava_data = clean_strava_data.drop(clean_strava_data.columns[15], axis=1)
 
 # standardize columns
@@ -33,19 +63,23 @@ clean_strava_data.columns = (
         .str.replace("-", "_")
 )
 
-clean_strava_data['activity_date'] = pd.to_datetime(
-    clean_strava_data['activity_date'],
-    format= "%b %d, %Y, %I:%M:%S %p",
+clean_strava_data['start_date'] = pd.to_datetime(
+    clean_strava_data['start_date'],
+    format= 'ISO8601',
 )
 clean_strava_data = clean_strava_data.rename(columns={
-    'activity_date':'timestamp', 
+    'start_date':'timestamp', 
     'elapsed_time':'total_time_min',
     'distance':'distance_miles',
-    'average_heart_rate':'avg_hr_bpm',
-    'max_heart_rate.1':'max_hr_bpm'
+    'average_heartrate':'avg_hr_bpm',
+    'max_heartrate':'max_hr_bpm',
+    'sport_type':'activity_type'
     })
 clean_strava_data['activity_type'] = clean_strava_data['activity_type'].replace('Run','Running')
 clean_strava_data['source'] = 'Strava'
+
+# converted timestamp column from: timezone-aware -> timezone-native
+clean_strava_data['timestamp'] = clean_strava_data['timestamp'].dt.tz_localize(None)
 
 # standardized time units: seconds -> minutes
 clean_strava_data['total_time_min'] = clean_strava_data['total_time_min'] / 60
@@ -58,6 +92,16 @@ clean_strava_data = clean_strava_data[
     (clean_strava_data['distance_miles'] > 0) &
     (clean_strava_data['activity_type'] == 'Running')
 ]
+
+clean_strava_data = clean_strava_data[[
+    'timestamp', 'total_time_min', 'distance_miles', 
+    'activity_type', 'avg_hr_bpm', 'max_hr_bpm', 'source'
+]]
+
+# standardized distance units: meters -> miles
+clean_strava_data['distance_miles'] = clean_strava_data['distance_miles'] / 1609.34
+
+strava_raw = strava_raw.astype(str)
 strava_raw.to_sql('strava_raw', conn, if_exists='replace', index=False)
 clean_strava_data.to_sql('clean_strava_data', conn, if_exists='replace', index=False)
 clean_strava_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv', index=False)
@@ -299,3 +343,4 @@ performance_analysis = pd.read_sql("""
     GROUP BY distance_bucket
 """, conn)
 performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',index=False)
+print('Success')
