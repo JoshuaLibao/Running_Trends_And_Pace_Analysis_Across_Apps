@@ -19,6 +19,14 @@ load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data
  
 db_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db'
 conn = sqlite3.connect(db_path)
+
+cursor = conn.cursor()
+ 
+cursor.execute(
+    "SELECT MAX(timestamp) FROM combined_datasets"
+)
+row = cursor.fetchone()
+last_sync = row[0] if row else None
  
 def get_access_token():
     response = requests.post('https://www.strava.com/oauth/token', data={
