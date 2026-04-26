@@ -6,6 +6,9 @@ from pathlib import Path
 import requests
 import os
 from dotenv import load_dotenv
+import time
+
+start_time = time.time()
  
 # Ensure local `src/` modules (like `tcx_to_csv.py`) are importable even when
 # running this script from a different working directory.
@@ -19,6 +22,19 @@ load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data
  
 db_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db'
 conn = sqlite3.connect(db_path)
+
+cursor = conn.cursor()
+ 
+cursor.execute(
+    "SELECT MAX(timestamp) FROM clean_strava_data"
+)
+row = cursor.fetchone()
+last_sync = row[0] if row else None
+
+if last_sync:
+    last_sync = pd.to_datetime(last_sync)
+
+print("LAST SYNC:", last_sync, type(last_sync))
  
 def get_access_token():
     response = requests.post('https://www.strava.com/oauth/token', data={
@@ -29,87 +45,153 @@ def get_access_token():
     })
     return response.json()['access_token']
  
-def get_activities(access_token):
+def get_activities(access_token, after_timestamp=None):
     activities = []
     page = 1
+
+    print("FILTER:", after_timestamp)
+
     while True:
         response = requests.get(
             'https://www.strava.com/api/v3/athlete/activities',
             headers={'Authorization': f'Bearer {access_token}'},
             params={'per_page': 200, 'page': page}
         )
+
         data = response.json()
         if not data:
             break
-        activities.extend(data)
+        
+        # filters data after the last sync date
+        if after_timestamp is not None:
+            filtered_data = []
+
+            for act in data:
+                act_time = datetime.fromisoformat(
+                    act['start_date'].replace('Z', '+00:00')
+                ).replace(tzinfo=None)
+
+                print("----")
+                print("ACTIVITY:", act_time)
+                print("LAST_SYNC", after_timestamp)
+                print("COMPARE:", act_time > after_timestamp if after_timestamp else "NO FILTER")
+
+                if after_timestamp is None or act_time > after_timestamp:
+                    filtered_data.append(act)
+
+            activities.extend(filtered_data)
+            print("NEW ACTIVITIES PULLED:", len(filtered_data))
+
+        else:
+            activities.extend(data)
+
         page += 1
+
     return activities
- 
+
+def process_strava(activities):
+    strava_raw = pd.DataFrame(activities)
+    clean_strava_data = strava_raw.copy()
+
+    # standardize columns
+    clean_strava_data.columns = (
+        clean_strava_data.columns
+            .str.strip()
+            .str.lower()
+            .str.replace(" ", "_")
+            .str.replace("-", "_")
+    )
+
+    # stable identifier for de-duping and DB joins
+    if "id" not in clean_strava_data.columns:
+        raise KeyError(f"Expected Strava 'id' field. Columns received: {list(clean_strava_data.columns)}")
+    clean_strava_data["activity_id"] = clean_strava_data["id"]
+
+    clean_strava_data['start_date'] = pd.to_datetime(
+        clean_strava_data['start_date'],
+        format= 'ISO8601',
+    )
+    clean_strava_data = clean_strava_data.rename(columns={
+        'start_date':'timestamp', 
+        'elapsed_time':'total_time_min',
+        'distance':'distance_miles',
+        'average_heartrate':'avg_hr_bpm',
+        'max_heartrate':'max_hr_bpm',
+        'sport_type':'activity_type'
+        })
+    clean_strava_data['activity_type'] = clean_strava_data['activity_type'].replace('Run','Running')
+    clean_strava_data['source'] = 'Strava'
+
+    # converted timestamp column from: timezone-aware -> timezone-native
+    clean_strava_data['timestamp'] = clean_strava_data['timestamp'].dt.tz_localize(None)
+
+    # standardized time units: seconds -> minutes
+    clean_strava_data['total_time_min'] = clean_strava_data['total_time_min'] / 60
+
+    # validate: date, time, distance and activity type
+    clean_strava_data = clean_strava_data[
+        (clean_strava_data['timestamp'] <= now) &
+        (clean_strava_data['total_time_min'] > 0) &
+        (clean_strava_data['distance_miles'] > 0) &
+        (clean_strava_data['activity_type'] == 'Running')
+    ]
+
+    expected_cols = ['avg_hr_bpm', 'max_hr_bpm']
+
+    for col in expected_cols:
+        if col not in clean_strava_data.columns:
+            clean_strava_data[col] = None
+
+    clean_strava_data = clean_strava_data[[
+        'activity_id',
+        'timestamp', 'total_time_min', 'distance_miles',
+        'activity_type', 'avg_hr_bpm', 'max_hr_bpm', 'source'
+    ]]
+
+    # standardized distance units: meters -> miles
+    clean_strava_data['distance_miles'] = clean_strava_data['distance_miles'] / 1609.34
+
+    strava_raw = strava_raw.astype(str)
+
+    return clean_strava_data, strava_raw
+
+def write_strava_data(strava_raw, clean_strava_data, conn):
+    strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
+    clean_strava_data = clean_strava_data.drop_duplicates(subset=["activity_id"])
+    existing_ids = pd.read_sql("SELECT activity_id FROM clean_strava_data", conn)
+    clean_strava_data = clean_strava_data[
+        ~clean_strava_data["activity_id"].isin(existing_ids["activity_id"])
+    ]
+    clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
+    clean_strava_data.to_csv(
+        r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
+        index=False,)
+    
+t0 = time.time()
 access_token = get_access_token()
-activities = get_activities(access_token)
-strava_raw = pd.DataFrame(activities)
-clean_strava_data = strava_raw.copy()
-
-# confirm all values are whole numbers in duplicate column -> clear to delete column
-elapsed_time_check = (clean_strava_data['elapsed_time'] % 1 == 0).all()
-clean_strava_data = clean_strava_data.drop(clean_strava_data.columns[15], axis=1)
-
-# standardize columns
-clean_strava_data.columns = (
-    clean_strava_data.columns
-        .str.strip()
-        .str.lower()
-        .str.replace(" ", "_")
-        .str.replace("-", "_")
-)
-
-clean_strava_data['start_date'] = pd.to_datetime(
-    clean_strava_data['start_date'],
-    format= 'ISO8601',
-)
-clean_strava_data = clean_strava_data.rename(columns={
-    'start_date':'timestamp', 
-    'elapsed_time':'total_time_min',
-    'distance':'distance_miles',
-    'average_heartrate':'avg_hr_bpm',
-    'max_heartrate':'max_hr_bpm',
-    'sport_type':'activity_type'
-    })
-clean_strava_data['activity_type'] = clean_strava_data['activity_type'].replace('Run','Running')
-clean_strava_data['source'] = 'Strava'
-
-# converted timestamp column from: timezone-aware -> timezone-native
-clean_strava_data['timestamp'] = clean_strava_data['timestamp'].dt.tz_localize(None)
-
-# standardized time units: seconds -> minutes
-clean_strava_data['total_time_min'] = clean_strava_data['total_time_min'] / 60
-
-# validate: date, time, distance and activity type
+t1 = time.time()
+activities = get_activities(access_token, after_timestamp=last_sync)
+print(f"Auth: {time.time() - t0}")
+print(f"Strava API: {time.time() - t1} seconds")
 now = pd.Timestamp.now()
-clean_strava_data = clean_strava_data[
-    (clean_strava_data['timestamp'] <= now) &
-    (clean_strava_data['total_time_min'] > 0) &
-    (clean_strava_data['distance_miles'] > 0) &
-    (clean_strava_data['activity_type'] == 'Running')
-]
 
-clean_strava_data = clean_strava_data[[
-    'timestamp', 'total_time_min', 'distance_miles', 
-    'activity_type', 'avg_hr_bpm', 'max_hr_bpm', 'source'
-]]
-
-# standardized distance units: meters -> miles
-clean_strava_data['distance_miles'] = clean_strava_data['distance_miles'] / 1609.34
-
-strava_raw = strava_raw.astype(str)
-strava_raw.to_sql('strava_raw', conn, if_exists='replace', index=False)
-clean_strava_data.to_sql('clean_strava_data', conn, if_exists='replace', index=False)
-clean_strava_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv', index=False)
+# check if there are any activities to process
+if not activities:
+    print("No new Strava activities. Skipping Strava processing.")
+    clean_strava_data = None  # empty placeholder
+    strava_raw = None
+else:
+    t3 = time.time()
+    clean_strava_data, strava_raw = process_strava(activities)
+    print(f"Strava processing: {time.time() - t3} seconds")
+    write_strava_data(strava_raw, clean_strava_data, conn)
 
 input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
 output_csv = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 
-write_summary_csv(input_dir, output_csv)
+t4 = time.time()
+write_summary_csv(input_dir, output_csv, conn)
+print(f"TCX processing: {time.time() - t4:.2f} seconds")
 
 nike_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 nike_raw = pd.read_csv(nike_path)
@@ -152,8 +234,10 @@ clean_nike_data = clean_nike_data[
 # standardize timestamp entry format
 clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
+clean_nike_data = clean_nike_data.drop_duplicates(subset=['timestamp', 'distance_miles'])
+
 nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
-clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
+clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
 clean_nike_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_nike_data.csv', index=False)
 
 combined_datasets = pd.read_sql("""
@@ -175,7 +259,6 @@ combined_datasets = pd.read_sql("""
         source
     FROM clean_nike_data
 """, conn)
-combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
 
 combined_datasets_final = pd.read_sql("""
     SELECT 
@@ -343,4 +426,6 @@ performance_analysis = pd.read_sql("""
     GROUP BY distance_bucket
 """, conn)
 performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',index=False)
-print('Success')
+
+end_time = time.time()
+print(f"Total runtime: {end_time - start_time:.2f} seconds")
