@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Dict, Iterable, Iterator, List, Optional, Tuple
 from xml.etree import ElementTree as ET
+import pandas as pd
 
 
 def _strip_ns(tag: str) -> str:
@@ -211,16 +212,31 @@ def _read_tcx(file_path: str) -> Optional[ET.Element]:
         return None
 
 
-def write_summary_csv(input_dir: str, output_csv: str) -> Tuple[int, int]:
+def write_summary_csv(input_dir: str, output_csv: str, conn) -> Tuple[int, int]:
     rows: List[ActivitySummary] = []
-    files = list(_walk_tcx_files(input_dir))
+
+    # get processed files
+    existing_files = pd.read_sql(
+        "SELECT file_path FROM processed_tcx_files",
+        conn
+    )
+    processed_set = set(existing_files["file_path"])
+
+    # filter new files
+    all_files = list(_walk_tcx_files(input_dir))
+    new_files = [str(fp) for fp in all_files if str(fp) not in processed_set]
+
+    print(f"New TCX files detected: {len(new_files)}")
+
     ok = 0
     bad = 0
-    for fp in files:
+
+    for fp in new_files:
         root = _read_tcx(fp)
         if root is None:
             bad += 1
             continue
+
         ok += 1
         rows.extend(_parse_activity_summary(root, fp))
 
@@ -241,22 +257,29 @@ def write_summary_csv(input_dir: str, output_csv: str) -> Tuple[int, int]:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
         for r in rows:
-            w.writerow(
-                {
-                    "file_path": r.file_path,
-                    "activity_id": r.activity_id,
-                    "sport": r.sport,
-                    "start_time_utc": r.start_time_utc,
-                    "total_time_s": r.total_time_s,
-                    "distance_m": r.distance_m,
-                    "calories": r.calories,
-                    "avg_hr_bpm": r.avg_hr_bpm,
-                    "max_hr_bpm": r.max_hr_bpm,
-                    "avg_cadence_rpm": r.avg_cadence_rpm,
-                }
-            )
-    return ok, bad
+            w.writerow({
+                "file_path": r.file_path,
+                "activity_id": r.activity_id,
+                "sport": r.sport,
+                "start_time_utc": r.start_time_utc,
+                "total_time_s": r.total_time_s,
+                "distance_m": r.distance_m,
+                "calories": r.calories,
+                "avg_hr_bpm": r.avg_hr_bpm,
+                "max_hr_bpm": r.max_hr_bpm,
+                "avg_cadence_rpm": r.avg_cadence_rpm,
+            })
 
+    # mark processed
+    if new_files:
+        pd.DataFrame({"file_path": new_files}).to_sql(
+            "processed_tcx_files",
+            conn,
+            if_exists="append",
+            index=False
+        )
+
+    return ok, bad
 
 def write_trackpoints_csv(input_dir: str, output_csv: str) -> Tuple[int, int, int]:
     files = list(_walk_tcx_files(input_dir))
