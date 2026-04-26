@@ -6,6 +6,9 @@ from pathlib import Path
 import requests
 import os
 from dotenv import load_dotenv
+import time
+
+start_time = time.time()
  
 # Ensure local `src/` modules (like `tcx_to_csv.py`) are importable even when
 # running this script from a different working directory.
@@ -58,7 +61,8 @@ def get_activities(access_token, after_timestamp=None):
         data = response.json()
         if not data:
             break
-
+        
+        # filters data after the last sync date
         if after_timestamp is not None:
             filtered_data = []
 
@@ -132,6 +136,12 @@ def process_strava(activities):
         (clean_strava_data['activity_type'] == 'Running')
     ]
 
+    expected_cols = ['avg_hr_bpm', 'max_hr_bpm']
+
+    for col in expected_cols:
+        if col not in clean_strava_data.columns:
+            clean_strava_data[col] = None
+
     clean_strava_data = clean_strava_data[[
         'activity_id',
         'timestamp', 'total_time_min', 'distance_miles',
@@ -145,19 +155,7 @@ def process_strava(activities):
 
     return clean_strava_data, strava_raw
 
-access_token = get_access_token()
-activities = get_activities(access_token, after_timestamp=last_sync)
-now = pd.Timestamp.now()
-
-# check if there are new actvities
-if not activities:
-    print("No new Strava activities. Skipping Strava processing.")
-    clean_strava_data = None  # empty placeholder
-    strava_raw = None
-else:
-    clean_strava_data, strava_raw = process_strava(activities)
-
-if clean_strava_data is not None and strava_raw is not None:
+def write_strava_data(strava_raw, clean_strava_data, conn):
     strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
     clean_strava_data = clean_strava_data.drop_duplicates(subset=["activity_id"])
     existing_ids = pd.read_sql("SELECT activity_id FROM clean_strava_data", conn)
@@ -167,13 +165,33 @@ if clean_strava_data is not None and strava_raw is not None:
     clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
     clean_strava_data.to_csv(
         r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
-        index=False,
-    )
+        index=False,)
+    
+t0 = time.time()
+access_token = get_access_token()
+t1 = time.time()
+activities = get_activities(access_token, after_timestamp=last_sync)
+print(f"Auth: {time.time() - t0}")
+print(f"Strava API: {time.time() - t1} seconds")
+now = pd.Timestamp.now()
+
+# check if there are any activities to process
+if not activities:
+    print("No new Strava activities. Skipping Strava processing.")
+    clean_strava_data = None  # empty placeholder
+    strava_raw = None
+else:
+    t3 = time.time()
+    clean_strava_data, strava_raw = process_strava(activities)
+    print(f"Strava processing: {time.time() - t3} seconds")
+    write_strava_data(strava_raw, clean_strava_data, conn)
 
 input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
 output_csv = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 
-write_summary_csv(input_dir, output_csv)
+t4 = time.time()
+write_summary_csv(input_dir, output_csv, conn)
+print(f"TCX processing: {time.time() - t4:.2f} seconds")
 
 nike_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 nike_raw = pd.read_csv(nike_path)
@@ -408,4 +426,6 @@ performance_analysis = pd.read_sql("""
     GROUP BY distance_bucket
 """, conn)
 performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',index=False)
-print('Success')
+
+end_time = time.time()
+print(f"Total runtime: {end_time - start_time:.2f} seconds")
