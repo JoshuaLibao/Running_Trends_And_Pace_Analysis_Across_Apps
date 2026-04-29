@@ -31,6 +31,14 @@ cursor.execute(
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
+MODE = "batch" # "incremental" or "batch"
+
+if MODE == "incremental":
+    after_timestamp = last_sync
+    after_timestamp = pd.to_datetime(after_timestamp)
+else:
+    after_timestamp = None
+
 if last_sync:
     last_sync = pd.to_datetime(last_sync)
 
@@ -44,8 +52,8 @@ def get_access_token():
         'grant_type': 'refresh_token'
     })
     return response.json()['access_token']
- 
-def get_activities(access_token, after_timestamp=None):
+
+def get_activities(access_token, after_timestamp):
     activities = []
     page = 1
 
@@ -59,6 +67,8 @@ def get_activities(access_token, after_timestamp=None):
         )
 
         data = response.json()
+        print(f"PAGE {page} LENGTH:", len(data))
+
         if not data:
             break
         
@@ -68,7 +78,7 @@ def get_activities(access_token, after_timestamp=None):
 
             for act in data:
                 act_time = datetime.fromisoformat(
-                    act['start_date'].replace('Z', '+00:00')
+                    act['start_date_local'].replace('Z', '+00:00')
                 ).replace(tzinfo=None)
 
                 print("----")
@@ -76,7 +86,7 @@ def get_activities(access_token, after_timestamp=None):
                 print("LAST_SYNC", after_timestamp)
                 print("COMPARE:", act_time > after_timestamp if after_timestamp else "NO FILTER")
 
-                if after_timestamp is None or act_time > after_timestamp:
+                if act_time > after_timestamp:
                     filtered_data.append(act)
 
             activities.extend(filtered_data)
@@ -107,12 +117,12 @@ def process_strava(activities):
         raise KeyError(f"Expected Strava 'id' field. Columns received: {list(clean_strava_data.columns)}")
     clean_strava_data["activity_id"] = clean_strava_data["id"]
 
-    clean_strava_data['start_date'] = pd.to_datetime(
-        clean_strava_data['start_date'],
+    clean_strava_data['start_date_local'] = pd.to_datetime(
+        clean_strava_data['start_date_local'],
         format= 'ISO8601',
     )
     clean_strava_data = clean_strava_data.rename(columns={
-        'start_date':'timestamp', 
+        'start_date_local':'timestamp', 
         'elapsed_time':'total_time_min',
         'distance':'distance_miles',
         'average_heartrate':'avg_hr_bpm',
@@ -156,24 +166,30 @@ def process_strava(activities):
     return clean_strava_data, strava_raw
 
 def write_strava_data(strava_raw, clean_strava_data, conn):
-    strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
-    clean_strava_data = clean_strava_data.drop_duplicates(subset=["activity_id"])
-    existing_ids = pd.read_sql("SELECT activity_id FROM clean_strava_data", conn)
-    clean_strava_data = clean_strava_data[
-        ~clean_strava_data["activity_id"].isin(existing_ids["activity_id"])
-    ]
-    clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
-    clean_strava_data.to_csv(
-        r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
-        index=False,)
+    if MODE == "batch":
+        clean_strava_data.to_sql("clean_strava_data", conn, if_exists="replace", index=False)
+        strava_raw.to_sql("strava_raw", conn, if_exists="replace", index=False)
+
+    else:  # incremental
+        clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
+        strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
+        clean_strava_data = clean_strava_data.drop_duplicates(subset=["activity_id"])
+        existing_ids = pd.read_sql("SELECT activity_id FROM clean_strava_data", conn)
+        clean_strava_data = clean_strava_data[
+            ~clean_strava_data["activity_id"].isin(existing_ids["activity_id"])
+        ]
+        clean_strava_data.to_csv(
+            r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
+            index=False,)
     
 t0 = time.time()
 access_token = get_access_token()
 t1 = time.time()
-activities = get_activities(access_token, after_timestamp=last_sync)
+activities = get_activities(access_token, after_timestamp)
 print(f"Auth: {time.time() - t0}")
 print(f"Strava API: {time.time() - t1} seconds")
 now = pd.Timestamp.now()
+print("TOTAL ACTIVITIES:", len(activities))
 
 # check if there are any activities to process
 if not activities:
@@ -241,7 +257,8 @@ clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
 clean_nike_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_nike_data.csv', index=False)
 
 combined_datasets = pd.read_sql("""
-    SELECT 
+    SELECT
+        activity_id, 
         timestamp, 
         distance_miles, 
         total_time_min, 
@@ -251,6 +268,7 @@ combined_datasets = pd.read_sql("""
     FROM clean_strava_data
     UNION ALL
     SELECT 
+        activity_id,
         timestamp, 
         distance_miles, 
         total_time_min, 
@@ -259,6 +277,7 @@ combined_datasets = pd.read_sql("""
         source
     FROM clean_nike_data
 """, conn)
+combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
 
 combined_datasets_final = pd.read_sql("""
     SELECT 
@@ -270,7 +289,7 @@ combined_datasets_final = pd.read_sql("""
         row_number,
         distance_bucket
     FROM ( 
-        SELECT 
+        SELECT
             timestamp, 
             distance_miles, 
             total_time_min, 
@@ -429,3 +448,4 @@ performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',in
 
 end_time = time.time()
 print(f"Total runtime: {end_time - start_time:.2f} seconds")
+
