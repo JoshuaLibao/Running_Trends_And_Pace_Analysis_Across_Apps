@@ -218,8 +218,7 @@ def write_summary_csv(input_dir: str, output_csv: str, conn) -> Tuple[int, int]:
     # get processed files
     existing_files = pd.read_sql(
         "SELECT file_path FROM processed_tcx_files",
-        conn
-    )
+        conn)
     processed_set = set(existing_files["file_path"])
 
     # filter new files
