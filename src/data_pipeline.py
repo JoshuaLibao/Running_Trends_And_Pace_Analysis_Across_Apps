@@ -31,7 +31,7 @@ cursor.execute(
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
-MODE = "batch" # "incremental" or "batch"
+MODE = "incremental" # "incremental" or "batch"
 
 if MODE == "incremental":
     after_timestamp = last_sync
@@ -285,7 +285,8 @@ combined_datasets_final = pd.read_sql("""
         distance_miles, 
         total_time_min, 
         activity_type, 
-        pace, source, 
+        pace, 
+        source, 
         row_number,
         distance_bucket
     FROM ( 
@@ -314,6 +315,10 @@ combined_datasets_final = pd.read_sql("""
     WHERE row_number = 1
 """, conn)
 
+# convert timestamp datatype to datetime and go from timezone native -> aware
+combined_datasets_final['timestamp'] = pd.to_datetime(combined_datasets_final['timestamp'])
+combined_datasets_final['timestamp'] = combined_datasets_final['timestamp'].dt.tz_localize(None)
+
 # assigned week number to run entries
 combined_datasets_final['week'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.isocalendar().week
 combined_datasets_final['week'] = combined_datasets_final['week'].astype(int)
@@ -336,45 +341,6 @@ dashboard_overview = pd.read_sql("""
     FROM combined_datasets_final
 """, conn)
 dashboard_overview.to_sql('dashboard_overview', conn, if_exists='replace', index=False)
-
-weekly_summary = pd.read_sql("""
-    SELECT 
-        year, 
-        week, 
-        COUNT(activity_type) AS total_runs, 
-        SUM(distance_miles) AS total_distance, 
-        AVG(pace) AS average_pace
-    FROM combined_datasets_final
-    GROUP BY year, week
-    ORDER BY year, week
-""", conn)
-weekly_summary.to_sql('weekly_summary', conn, if_exists='replace', index=False)
-
-monthly_summary = pd.read_sql("""
-    SELECT 
-        year, 
-        CASE strftime('%m', timestamp)
-            WHEN '01' THEN 'January'
-            WHEN '02' THEN 'February'
-            WHEN '03' THEN 'March'
-            WHEN '04' THEN 'April'
-            WHEN '05' THEN 'May'
-            WHEN '06' THEN 'June'
-            WHEN '07' THEN 'July'
-            WHEN '08' THEN 'August'
-            WHEN '09' THEN 'September'
-            WHEN '10' THEN 'October'
-            WHEN '11' THEN 'November'
-            WHEN '12' THEN 'December'
-        END AS month_name, 
-        COUNT(activity_type) AS total_runs, 
-        SUM(distance_miles) AS total_distance, 
-        AVG(pace) AS average_pace
-    FROM combined_datasets_final
-    GROUP BY year, month
-    ORDER BY year, month
-""", conn)
-monthly_summary.to_sql('monthly_summary', conn, if_exists='replace', index=False)
 
 source_main = pd.read_sql("""
     SELECT 
@@ -449,3 +415,48 @@ performance_analysis.to_sql('performance_analysis', conn, if_exists='replace',in
 end_time = time.time()
 print(f"Total runtime: {end_time - start_time:.2f} seconds")
 
+# # testing dynamic query, hardcode for now, later it will take user input 
+first_timestamp = '2026-01-01 00:48:51'
+last_timestamp = "2026-05-10 16:00:52"
+
+# group by week, month or year
+time_frame = "weekly"
+
+# validation for groupings
+allowed_groupings = {
+    "weekly": "year, week",
+    "monthly": "year, month",
+    "yearly": "year"
+}
+grouping_sql = allowed_groupings[time_frame]
+
+dynamic_query = pd.read_sql(f"""
+    SELECT 
+        year, 
+        CASE strftime('%m', timestamp)
+            WHEN '01' THEN 'January'
+            WHEN '02' THEN 'February'
+            WHEN '03' THEN 'March'
+            WHEN '04' THEN 'April'
+            WHEN '05' THEN 'May'
+            WHEN '06' THEN 'June'
+            WHEN '07' THEN 'July'
+            WHEN '08' THEN 'August'
+            WHEN '09' THEN 'September'
+            WHEN '10' THEN 'October'
+            WHEN '11' THEN 'November'
+            WHEN '12' THEN 'December'
+        END AS month_name,
+        week, 
+        COUNT(activity_type) AS total_runs, 
+        SUM(distance_miles) AS total_distance, 
+        AVG(pace) AS average_pace
+    FROM combined_datasets_final
+    WHERE timestamp >= ? AND timestamp <= ?
+    GROUP BY {grouping_sql}
+    ORDER BY {grouping_sql}
+""", conn, params=(first_timestamp, last_timestamp))
+dynamic_query.to_sql('dynamic_query', conn, if_exists='replace',index=False)
+
+conn.commit()
+conn.close()
