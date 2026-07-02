@@ -1,6 +1,8 @@
+from multiprocessing import current_process
+from typing import Any
 import pandas as pd
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 import sys
 from pathlib import Path
 import requests
@@ -28,6 +30,7 @@ cursor = conn.cursor()
 cursor.execute(
     "SELECT MAX(timestamp) FROM clean_strava_data"
 )
+
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
@@ -53,8 +56,12 @@ def get_access_token():
     })
     return response.json()['access_token']
 
-def get_activities(access_token, after_timestamp):
+def get_activities(access_token, after_timestamp, conn):
     activities = []
+    all_best_efforts = []
+    activity_details_list = []
+    processed_activity_details_list = []
+    current_prs_list = pd.DataFrame()
     page = 1
 
     print("FILTER:", after_timestamp)
@@ -65,18 +72,86 @@ def get_activities(access_token, after_timestamp):
             headers={'Authorization': f'Bearer {access_token}'},
             params={'per_page': 200, 'page': page}
         )
+        
+        print(f"RESPONSE STATUS CODE: {response.status_code}")
 
         data = response.json()
-        print(f"PAGE {page} LENGTH:", len(data))
 
         if not data:
             break
+        
+        print(f"PAGE {page} LENGTH:", len(data))
+
+        processed_activity_details = pd.read_sql("""
+            SELECT id, type
+            FROM processed_activity_details
+        """, conn)
+
+        # turn processed_activity_ids into a set
+        processed_activity_ids = set[Any](processed_activity_details["id"])
+
+        read_rate = 0
+        max_reads = 90       
+        for act in data:
+            if read_rate <= max_reads:
+                activity_id = act["id"]
+                activity_type = act["type"]
+
+                if activity_id in processed_activity_ids:
+                    print("activity already logged! moving onto next activity")
+                    continue
+                else:        
+                    activity_response = requests.get(
+                        f"https://www.strava.com/api/v3/activities/{activity_id}",
+                        headers={"Authorization": f"Bearer {access_token}"}
+                    )
+
+                    print(f"ACTIVITY_RESPONSE STATUS CODE: {activity_response.status_code}")
+                    print(f"Processing activity {activity_id}")
+                    
+                    activity_detail = activity_response.json()
+
+                    processed_activity_details_list.append(activity_detail)
+                    read_rate+=1
+                    print(activity_response.headers.get("X-RateLimit-Usage"))
+                    print(f"read rate limit: {read_rate}/{max_reads}")
+
+                    if activity_detail.get("best_efforts"):
+                        best_efforts_df = pd.DataFrame(activity_detail["best_efforts"])
+                        best_efforts_df["activity_id"] = activity_detail["id"]
+                        all_best_efforts.append(best_efforts_df)
+                        print("best efforts logged")
+                    else:
+                        print("best_efforts is empty")
+                        continue
+            else:
+                print("read rate limit reached! wait 15 minutes")
+                print(f"read rate limit was hit on this day/time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                break
+
+        if all_best_efforts:
+            all_best_efforts = pd.concat(all_best_efforts, ignore_index=True)
+            current_prs_list = (
+                all_best_efforts[all_best_efforts["pr_rank"] == 1]
+                .sort_values("start_date")
+                .groupby("distance", as_index=False)
+                .first()
+            )
+        
+        print(f"activity_type: {activity_type}")
+        print(f"activity_detail data type: {type(activity_details_list)}")
+        print(f"tuple length: {len(activity_details_list)}")
         
         # filters data after the last sync date
         if after_timestamp is not None:
             filtered_data = []
 
+            if not isinstance(data, list):
+                print("Strava error payload:", data)
+                break   # or raise
+
             for act in data:
+                
                 act_time = datetime.fromisoformat(
                     act['start_date_local'].replace('Z', '+00:00')
                 ).replace(tzinfo=None)
@@ -90,20 +165,25 @@ def get_activities(access_token, after_timestamp):
                     filtered_data.append(act)
 
             activities.extend(filtered_data)
-            print("NEW ACTIVITIES PULLED:", len(filtered_data))
 
         else:
             activities.extend(data)
 
         page += 1
 
-    return activities
+    return activities, activity_details_list, processed_activity_details_list, current_prs_list
 
-def process_strava(activities):
+def process_strava(activities, processed_activity_details_list, current_prs_list):
     strava_raw = pd.DataFrame(activities)
+    processed_activity_details_df = pd.DataFrame(processed_activity_details_list)
+    current_prs_df = pd.DataFrame(current_prs_list)
+
     clean_strava_data = strava_raw.copy()
 
     # standardize columns
+    clean_strava_data.columns = clean_strava_data.columns.astype(str)
+    print(f"clean_strava_data columns dtypes: {clean_strava_data.columns.dtype}")
+
     clean_strava_data.columns = (
         clean_strava_data.columns
             .str.strip()
@@ -161,15 +241,28 @@ def process_strava(activities):
     # standardized distance units: meters -> miles
     clean_strava_data['distance_miles'] = clean_strava_data['distance_miles'] / 1609.34
 
+    processed_activity_details_df = processed_activity_details_df[[
+        'id', 'type'
+    ]]
+
+    current_prs_df = current_prs_df[[
+        'id', 'name', 'elapsed_time', 'distance' 
+    ]]
+
+    current_prs_df["elapsed_time_minutes"] = current_prs_df["elapsed_time"] / 60
+    current_prs_df["distance_miles"] = current_prs_df["distance"] / 1609.34
+    current_prs_df["pace"] = current_prs_df["elapsed_time_minutes"] / current_prs_df["distance_miles"]
+
     strava_raw = strava_raw.astype(str)
 
-    return clean_strava_data, strava_raw
+    return strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df
 
-def write_strava_data(strava_raw, clean_strava_data, conn):
+def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df, conn):
     if MODE == "batch":
         clean_strava_data.to_sql("clean_strava_data", conn, if_exists="replace", index=False)
         strava_raw.to_sql("strava_raw", conn, if_exists="replace", index=False)
-
+        processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="replace", index=False)
+        current_prs_df.to_sql("current_prs", conn, if_exists="replace",index=False)
     else:  # incremental
         clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
         strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
@@ -181,11 +274,14 @@ def write_strava_data(strava_raw, clean_strava_data, conn):
         clean_strava_data.to_csv(
             r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
             index=False,)
-    
+        processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="append", index=False)
+        current_prs_df.to_sql("current_prs", conn, if_exists="append",index=False)
+
 t0 = time.time()
 access_token = get_access_token()
 t1 = time.time()
-activities = get_activities(access_token, after_timestamp)
+activities, activity_details_list, processed_activity_details_list, current_prs_list = get_activities(access_token, after_timestamp, conn)
+
 print(f"Auth: {time.time() - t0}")
 print(f"Strava API: {time.time() - t1} seconds")
 now = pd.Timestamp.now()
@@ -198,9 +294,9 @@ if not activities:
     strava_raw = None
 else:
     t3 = time.time()
-    clean_strava_data, strava_raw = process_strava(activities)
+    strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df = process_strava(activities, processed_activity_details_list, current_prs_list)
     print(f"Strava processing: {time.time() - t3} seconds")
-    write_strava_data(strava_raw, clean_strava_data, conn)
+    write_strava_data(strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df, conn)
 
 input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
 output_csv = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
@@ -457,6 +553,19 @@ dynamic_query = pd.read_sql(f"""
     ORDER BY {grouping_sql}
 """, conn, params=(first_timestamp, last_timestamp))
 dynamic_query.to_sql('dynamic_query', conn, if_exists='replace',index=False)
+
+# current_prs = pd.read_sql("""
+#     SELECT name, pace 
+#     FROM (
+#         elapsed_time,
+#         distance,
+#         (elapsed_time/60) AS elapsed_time_minutes,
+#         (distance/1609.34) AS distance_miles,
+#         elapsed_time_minutes/distance_miles AS pace
+#         FROM current_prs
+#         )
+# """, conn)
+# current_prs.to_sql("current_prs", conn, if_exists='replace',index=False)
 
 conn.commit()
 conn.close()
