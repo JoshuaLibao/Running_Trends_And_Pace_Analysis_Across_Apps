@@ -61,7 +61,7 @@ def get_activities(access_token, after_timestamp, conn):
     all_best_efforts = []
     activity_details_list = []
     processed_activity_details_list = []
-    current_prs_list = pd.DataFrame()
+    current_prs_df = pd.DataFrame()
     page = 1
 
     print("FILTER:", after_timestamp)
@@ -100,6 +100,11 @@ def get_activities(access_token, after_timestamp, conn):
                 if activity_id in processed_activity_ids:
                     print("activity already logged! moving onto next activity")
                     continue
+
+                if activity_type != 'Run':
+                    print("this activity is not a run! moving onto next activity")
+                    continue
+                                    
                 else:        
                     activity_response = requests.get(
                         f"https://www.strava.com/api/v3/activities/{activity_id}",
@@ -112,18 +117,23 @@ def get_activities(access_token, after_timestamp, conn):
                     activity_detail = activity_response.json()
 
                     processed_activity_details_list.append(activity_detail)
-                    read_rate+=1
-                    print(activity_response.headers.get("X-RateLimit-Usage"))
-                    print(f"read rate limit: {read_rate}/{max_reads}")
 
-                    if activity_detail.get("best_efforts"):
-                        best_efforts_df = pd.DataFrame(activity_detail["best_efforts"])
-                        best_efforts_df["activity_id"] = activity_detail["id"]
-                        all_best_efforts.append(best_efforts_df)
-                        print("best efforts logged")
+                    if processed_activity_details_list:
+                        read_rate+=1
+                        print(activity_response.headers.get("X-RateLimit-Usage"))
+                        print(f"read rate limit: {read_rate}/{max_reads}")
+
+                        if activity_detail.get("best_efforts"):
+                            best_efforts_df = pd.DataFrame(activity_detail["best_efforts"])
+                            best_efforts_df["activity_id"] = activity_detail["id"]
+                            all_best_efforts.append(best_efforts_df)
+                            print("best efforts logged")
+                        else:
+                            print("best_efforts is empty")
+                            continue
                     else:
-                        print("best_efforts is empty")
-                        continue
+                        print("processed_activity_details_list is empty")
+                        break                  
             else:
                 print("read rate limit reached! wait 15 minutes")
                 print(f"read rate limit was hit on this day/time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -131,7 +141,7 @@ def get_activities(access_token, after_timestamp, conn):
 
         if all_best_efforts:
             all_best_efforts = pd.concat(all_best_efforts, ignore_index=True)
-            current_prs_list = (
+            current_prs_df = (
                 all_best_efforts[all_best_efforts["pr_rank"] == 1]
                 .sort_values("start_date")
                 .groupby("distance", as_index=False)
@@ -171,12 +181,29 @@ def get_activities(access_token, after_timestamp, conn):
 
         page += 1
 
-    return activities, activity_details_list, processed_activity_details_list, current_prs_list
+    return activities, activity_details_list, processed_activity_details_list, current_prs_df
 
-def process_strava(activities, processed_activity_details_list, current_prs_list):
+def process_strava(activities, processed_activity_details_list, current_prs_df):
     strava_raw = pd.DataFrame(activities)
-    processed_activity_details_df = pd.DataFrame(processed_activity_details_list)
-    current_prs_df = pd.DataFrame(current_prs_list)
+
+    if processed_activity_details_list:
+        processed_activity_details_df = pd.DataFrame(processed_activity_details_list)
+        processed_activity_details_df = processed_activity_details_df[[
+        'id', 'type'
+        ]]
+    else:
+        processed_activity_details_df = pd.DataFrame()
+        print("processed_activity_details_list is empty! dataframe cannot be made")
+
+    if len(current_prs_df) > 0:
+        current_prs_df = current_prs_df[[
+        'id', 'name', 'elapsed_time', 'distance' 
+        ]]
+        current_prs_df["elapsed_time_minutes"] = current_prs_df["elapsed_time"] / 60
+        current_prs_df["distance_miles"] = current_prs_df["distance"] / 1609.34
+        current_prs_df["pace"] = current_prs_df["elapsed_time_minutes"] / current_prs_df["distance_miles"]
+    else:
+        print("current_prs_df is empty!")
 
     clean_strava_data = strava_raw.copy()
 
@@ -241,18 +268,6 @@ def process_strava(activities, processed_activity_details_list, current_prs_list
     # standardized distance units: meters -> miles
     clean_strava_data['distance_miles'] = clean_strava_data['distance_miles'] / 1609.34
 
-    processed_activity_details_df = processed_activity_details_df[[
-        'id', 'type'
-    ]]
-
-    current_prs_df = current_prs_df[[
-        'id', 'name', 'elapsed_time', 'distance' 
-    ]]
-
-    current_prs_df["elapsed_time_minutes"] = current_prs_df["elapsed_time"] / 60
-    current_prs_df["distance_miles"] = current_prs_df["distance"] / 1609.34
-    current_prs_df["pace"] = current_prs_df["elapsed_time_minutes"] / current_prs_df["distance_miles"]
-
     strava_raw = strava_raw.astype(str)
 
     return strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df
@@ -262,7 +277,7 @@ def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_
         clean_strava_data.to_sql("clean_strava_data", conn, if_exists="replace", index=False)
         strava_raw.to_sql("strava_raw", conn, if_exists="replace", index=False)
         processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="replace", index=False)
-        current_prs_df.to_sql("current_prs", conn, if_exists="replace",index=False)
+        current_prs_df.to_sql("current_prs_raw", conn, if_exists="replace",index=False)
     else:  # incremental
         clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
         strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
@@ -275,7 +290,7 @@ def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_
             r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
             index=False,)
         processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="append", index=False)
-        current_prs_df.to_sql("current_prs", conn, if_exists="append",index=False)
+        current_prs_df.to_sql("current_prs_raw", conn, if_exists="append",index=False)
 
 t0 = time.time()
 access_token = get_access_token()
@@ -554,18 +569,41 @@ dynamic_query = pd.read_sql(f"""
 """, conn, params=(first_timestamp, last_timestamp))
 dynamic_query.to_sql('dynamic_query', conn, if_exists='replace',index=False)
 
-# current_prs = pd.read_sql("""
-#     SELECT name, pace 
-#     FROM (
-#         elapsed_time,
-#         distance,
-#         (elapsed_time/60) AS elapsed_time_minutes,
-#         (distance/1609.34) AS distance_miles,
-#         elapsed_time_minutes/distance_miles AS pace
-#         FROM current_prs
-#         )
-# """, conn)
-# current_prs.to_sql("current_prs", conn, if_exists='replace',index=False)
+current_prs_raw = pd.read_sql("""
+    SELECT * 
+    FROM current_prs_raw 
+""", conn)
+
+# current_prs table transformations will be here for now
+current_prs_clean = current_prs_raw.copy()
+current_prs_clean["total_time_min"] = current_prs_clean["elapsed_time"] / 60
+current_prs_clean["distance_miles"] = current_prs_clean["distance"] / 1609.34
+current_prs_clean["pace"] = current_prs_clean["total_time_min"] / current_prs_clean["distance_miles"]
+
+current_prs_clean.to_sql("current_prs_clean", conn, if_exists='replace', index=False)
+
+current_prs_clean = pd.read_sql("""
+    SELECT
+        name,
+        elapsed_time,
+        pace
+    FROM (
+        SELECT 
+            name, 
+            elapsed_time, 
+            distance,
+            pace,
+        ROW_NUMBER() OVER(
+            PARTITION BY(distance)
+            ORDER BY elapsed_time ASC
+            ) AS distance_count
+        FROM current_prs_clean
+        )
+    WHERE distance_count = 1
+""", conn)
+current_prs_clean.to_sql("current_prs_clean", conn, if_exists='replace', index=False)
+
+print(current_prs_raw[["name","elapsed_time","distance"]].head(5))
 
 conn.commit()
 conn.close()
