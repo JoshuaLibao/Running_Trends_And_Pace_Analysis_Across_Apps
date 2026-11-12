@@ -58,7 +58,6 @@ def get_access_token():
 
 def get_activities(access_token, after_timestamp, conn):
     activities = []
-    all_best_efforts = []
     activity_details_list = []
     processed_activity_details_list = []
     current_prs_df = pd.DataFrame()
@@ -87,12 +86,92 @@ def get_activities(access_token, after_timestamp, conn):
             FROM processed_activity_details
         """, conn)
 
+# expected strava_raw db schema
+        strava_raw_schema = {
+            "resource_state",
+            "athlete",
+            "name",
+            "distance",
+            "moving_time",
+            "elapsed_time",
+            "total_elevation_gain",
+            "type",
+            "sport_type",
+            "workout_type",
+            "device_name",
+            "tags",
+            "id",
+            "id_str",
+            "start_date",
+            "start_date_local",
+            "timezone",
+            "utc_offset",
+            "location_city",
+            "location_state",
+            "location_country",
+            "achievement_count",
+            "kudos_count",
+            "comment_count",
+            "athlete_count",
+            "photo_count",
+            "map",
+            "trainer",
+            "commute",
+            "manual",
+            "private",
+            "visibility",
+            "flagged",
+            "gear_id",
+            "start_latlng",
+            "end_latlng",
+            "average_speed",
+            "max_speed",
+            "average_cadence",
+            "average_watts",
+            "max_watts",
+            "weighted_average_watts",
+            "device_watts",
+            "kilojoules",
+            "has_heartrate",
+            "average_heartrate",
+            "max_heartrate",
+            "heartrate_opt_out",
+            "display_hide_heartrate_option",
+            "elev_high",
+            "elev_low",
+            "upload_id",
+            "upload_id_str",
+            "external_id",
+            "from_accepted_tag",
+            "pr_count",
+            "total_photo_count",
+            "has_kudoed",
+            "suffer_score"   
+        }
+
         # turn processed_activity_ids into a set
         processed_activity_ids = set[Any](processed_activity_details["id"])
 
+        # turn raw strava data into a set
+        strava_raw_column_names = set()
+
+        for activity in data:
+            strava_raw_column_names.update(activity.keys())
+
+        missing = strava_raw_schema - strava_raw_column_names
+        unexpected = strava_raw_column_names - strava_raw_schema
+
+        if missing:
+            print("Expected columns missing:", sorted(missing))
+        if unexpected:
+            print("Unexpected columns:", sorted(unexpected))
+            
         read_rate = 0
-        max_reads = 90       
+        max_reads = 5 
+        all_best_efforts = []
+
         for act in data:
+            
             if read_rate <= max_reads:
                 activity_id = act["id"]
                 activity_type = act["type"]
@@ -141,12 +220,14 @@ def get_activities(access_token, after_timestamp, conn):
 
         if all_best_efforts:
             all_best_efforts = pd.concat(all_best_efforts, ignore_index=True)
-            current_prs_df = (
-                all_best_efforts[all_best_efforts["pr_rank"] == 1]
-                .sort_values("start_date")
-                .groupby("distance", as_index=False)
-                .first()
-            )
+
+            if not all_best_efforts.empty:
+                current_prs_df = (
+                    all_best_efforts[all_best_efforts["pr_rank"] == 1]
+                    .sort_values("start_date")
+                    .groupby("distance", as_index=False)
+                    .first()
+                )
         
         print(f"activity_type: {activity_type}")
         print(f"activity_detail data type: {type(activity_details_list)}")
