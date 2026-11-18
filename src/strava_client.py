@@ -2,7 +2,7 @@ import requests
 import time
 import json
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 class StravaRateTracker:
@@ -14,11 +14,12 @@ class StravaRateTracker:
 
     def load_state(self):
         """Load persisted usage from disk so restarts don't lose daily count."""
+        now = datetime.now(timezone.utc)
+        today = now.date().isoformat()
+        window_15 = self._window_15(now)
         if os.path.exists(self.state_file):
             with open(self.state_file) as f:
                 state = json.load(f)
-            today = str(datetime.utcnow().date())
-            # Reset daily count if it's a new day
             if state.get("date") != today:
                 state["usage_day"] = 0
                 state["date"] = today
@@ -26,11 +27,23 @@ class StravaRateTracker:
             self.usage_day = state.get("usage_day", 0)
             self.limit_15 = state.get("limit_15", 200)
             self.limit_day = state.get("limit_day", 2000)
+            if state.get("window_15") != window_15:
+                self.usage_15 = 0
         else:
             self.usage_15 = 0
             self.usage_day = 0
             self.limit_15 = 200
             self.limit_day = 2000
+
+        self.date = today
+        self.window_15 = window_15
+
+    @staticmethod
+    def _window_15(now):
+        return (
+            f"{now.date().isoformat()}-{now.hour:02d}-"
+            f"{now.minute // 15 * 15:02d}"
+        )
 
     def save_state(self):
         """Persist current usage to disk."""
@@ -40,57 +53,86 @@ class StravaRateTracker:
                 "usage_day": self.usage_day,
                 "limit_15": self.limit_15,
                 "limit_day": self.limit_day,
-                "date": str(datetime.utcnow().date()),
+                "date": self.date,
+                "window_15": self.window_15,
             }, f)
 
     def update_from_response(self, resp):
         """Parse rate-limit headers from a Strava response."""
         if 'X-RateLimit-Usage' in resp.headers:
-            u15, uday = resp.headers['X-RateLimit-Usage'].split(',')
+            u15, uday = resp.headers['X-RateLimit-Usage'].split(',', maxsplit=1)
             self.usage_15 = int(u15)
             self.usage_day = int(uday)
         if 'X-RateLimit-Limit' in resp.headers:
-            l15, lday = resp.headers['X-RateLimit-Limit'].split(',')
+            l15, lday = resp.headers['X-RateLimit-Limit'].split(',', maxsplit=1)
             self.limit_15 = int(l15)
             self.limit_day = int(lday)
+        now = datetime.now(timezone.utc)
+        self.date = now.date().isoformat()
+        self.window_15 = self._window_15(now)
         self.save_state()
+
+    def _reset_expired_windows(self, now):
+        today = now.date().isoformat()
+        window_15 = self._window_15(now)
+        changed = False
+
+        if self.date != today:
+            self.usage_day = 0
+            self.date = today
+            changed = True
+        if self.window_15 != window_15:
+            self.usage_15 = 0
+            self.window_15 = window_15
+            changed = True
+        if changed:
+            self.save_state()
 
     def wait_if_needed(self):
         """Block until we're safe to make another request."""
-        # --- 15-minute bucket: boundaries at :00, :15, :30, :45 ---
-        if self.usage_15 >= self.limit_15:
-            now = datetime.utcnow()
-            next_boundary = now + timedelta(minutes=15 - now.minute % 15)
-            next_boundary = next_boundary.replace(second=0, microsecond=0)
-            sleep_sec = (next_boundary - now).total_seconds()
-            if sleep_sec > 0:
-                print(f"[RateLimit] 15-min limit hit. Sleeping {sleep_sec:.0f}s until {next_boundary}")
-                time.sleep(sleep_sec)
+        now = datetime.now(timezone.utc)
+        self._reset_expired_windows(now)
+        reset_times = []
 
-        # --- Daily bucket: resets at midnight UTC ---
+        if self.usage_15 >= self.limit_15:
+            minutes_to_next = 15 - now.minute % 15
+            next_boundary = (now + timedelta(minutes=minutes_to_next)).replace(
+                second=0, microsecond=0
+            )
+            reset_times.append(next_boundary)
         if self.usage_day >= self.limit_day:
-            tomorrow = (datetime.utcnow() + timedelta(days=1)).replace(
+            tomorrow = (now + timedelta(days=1)).replace(
                 hour=0, minute=0, second=0, microsecond=0
             )
-            sleep_sec = (tomorrow - datetime.utcnow()).total_seconds()
-            print(f"[RateLimit] Daily limit hit. Sleeping until midnight UTC ({sleep_sec:.0f}s)")
+            reset_times.append(tomorrow)
+
+        if reset_times:
+            reset_at = max(reset_times)
+            sleep_sec = max(0, (reset_at - now).total_seconds())
+            print(f"[RateLimit] Limit reached. Sleeping {sleep_sec:.0f}s until {reset_at}")
             time.sleep(sleep_sec)
+            self._reset_expired_windows(datetime.now(timezone.utc))
 
     def request(self, method, url, **kwargs):
         """Make an API call with automatic rate-limit handling."""
-        self.wait_if_needed()
-        resp = requests.request(method, url, **kwargs)
-        self.update_from_response(resp)
-
-        # Handle 429 (rate-limited despite our tracking)
-        if resp.status_code == 429:
-            wait = int(resp.headers.get('Retry-After', 60))
-            print(f"[RateLimit] 429! Retrying after {wait}s")
-            time.sleep(wait)
+        for attempt in range(4):
+            self.wait_if_needed()
             resp = requests.request(method, url, **kwargs)
             self.update_from_response(resp)
 
-        return resp
+            if resp.status_code != 429:
+                resp.raise_for_status()
+                return resp
+
+            if attempt == 3:
+                resp.raise_for_status()
+
+            try:
+                wait = int(resp.headers.get('Retry-After', 60))
+            except ValueError:
+                wait = 60
+            print(f"[RateLimit] 429! Retrying after {wait}s")
+            time.sleep(wait)
 
     def get(self, url, **kwargs):
         return self.request("GET", url, **kwargs)
