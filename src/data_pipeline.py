@@ -272,7 +272,7 @@ def get_activities(access_token, after_timestamp, conn):
                 .first()
             )
 
-    return activities, activity_details_list, processed_activity_details_list, current_prs_df
+    return activities, activity_details_list, processed_activity_details_list, current_prs_df, missing, unexpected
 
 def process_strava(activities, processed_activity_details_list, current_prs_df):
     strava_raw = pd.DataFrame(activities)
@@ -391,7 +391,12 @@ def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_
 t0 = time.time()
 access_token = get_access_token()
 t1 = time.time()
-activities, activity_details_list, processed_activity_details_list, current_prs_list = get_activities(access_token, after_timestamp, conn)
+missing, unexpected, activities, activity_details_list, processed_activity_details_list, current_prs_list = get_activities(access_token, after_timestamp, conn)
+
+if missing:
+    print(f"=====================\n WARNING: Incoming data from the activity details endpoint is missing expected columns: \n ===================== \n{sorted(missing)}")
+if unexpected:
+    print(f"=====================\n INFO: Ignoring unexpected columns in incoming data from the activity details endpoint: \n ===================== \n columns: {sorted(unexpected)}")
 
 print(f"Auth: {time.time() - t0}")
 print(f"Strava API: {time.time() - t1} seconds")
@@ -457,7 +462,7 @@ clean_nike_data = clean_nike_data[
 # standardize timestamp entry format
 clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
-clean_nike_data = clean_nike_data.drop_duplicates(subset=['timestamp', 'distance_miles'])
+clean_nike_data = clean_nike_data.drop_duplicates(subset=['file_path'])
 
 nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
 clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
