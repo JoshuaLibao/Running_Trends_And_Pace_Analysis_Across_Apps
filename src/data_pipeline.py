@@ -39,7 +39,7 @@ cursor.execute(
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
-MODE = "incremental" # "incremental" or "batch"
+MODE = "batch" # "incremental" or "batch"
 
 if MODE == "incremental":
     after_timestamp = last_sync
@@ -445,10 +445,11 @@ if MODE == "incremental":
             nike_last_sync = pd.to_datetime(last_nike_sync_value)
 
     if nike_last_sync is not None:
-        nike_timestamps = pd.to_datetime(
-            nike_raw["start_time_utc"],
-            utc=True,
-        ).dt.tz_localize(None)
+        nike_timestamps = (
+            pd.to_datetime(nike_raw["start_time_utc"], utc=True)
+            .dt.ez_convert('America/Los_Angeles')
+            .dt.tz_localize(None)
+        )
         nike_raw = nike_raw[nike_timestamps > nike_last_sync]
 
 # standardized nike run club data
@@ -465,7 +466,11 @@ clean_nike_data['timestamp'] = pd.to_datetime(
 clean_nike_data['source'] = 'Nike'
 
 # converted timestamp column from: timezone-aware -> timezone-native
-clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.tz_localize(None)
+clean_nike_data['timestamp'] = (
+    pd.to_datetime(clean_nike_data['timestamp'], utc=True)
+      .dt.tz_convert('America/Los_Angeles')
+      .dt.tz_localize(None)
+)
 
 # separated start date and time
 clean_nike_data['start_date'] = clean_nike_data['timestamp'].dt.date
