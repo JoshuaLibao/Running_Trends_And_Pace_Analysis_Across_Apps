@@ -18,7 +18,7 @@ _THIS_DIR = Path(__file__).resolve().parent
 if str(_THIS_DIR) not in sys.path:
     sys.path.insert(0, str(_THIS_DIR))
  
-from tcx_to_csv import write_summary_csv
+from tcx_to_csv import read_summary_dataframe
 from strava_client import StravaRateTracker
 
 strava_api = StravaRateTracker(
@@ -69,7 +69,7 @@ def get_activities(access_token, after_timestamp, conn):
     all_best_efforts = []
     page = 1
     detail_requests = 0
-    max_detail_requests = 99
+    max_detail_requests = 50
     detail_request_cap_logged = False
 
     print("FILTER:", after_timestamp)
@@ -391,7 +391,7 @@ def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_
 t0 = time.time()
 access_token = get_access_token()
 t1 = time.time()
-missing, unexpected, activities, activity_details_list, processed_activity_details_list, current_prs_list = get_activities(access_token, after_timestamp, conn)
+activities, activity_details_list, processed_activity_details_list, current_prs_list, missing, unexpected = get_activities(access_token, after_timestamp, conn)
 
 if missing:
     print(f"=====================\n WARNING: Incoming data from the activity details endpoint is missing expected columns: \n ===================== \n{sorted(missing)}")
@@ -415,20 +415,46 @@ else:
     write_strava_data(strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df, conn)
 
 input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
-output_csv = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
 
 t4 = time.time()
-write_summary_csv(input_dir, output_csv, conn)
+nike_raw = read_summary_dataframe(input_dir)
 print(f"TCX processing: {time.time() - t4:.2f} seconds")
 
-nike_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\raw_nike.csv'
-nike_raw = pd.read_csv(nike_path)
-clean_nike_data = nike_raw.copy()
+nike_table_exists = conn.execute(
+    "SELECT 1 FROM sqlite_master WHERE type='table' AND name='nike_raw'"
+).fetchone()
+clean_nike_table_exists = conn.execute(
+    "SELECT 1 FROM sqlite_master WHERE type='table' AND name='clean_nike_data'"
+).fetchone()
+
+if MODE == "incremental":
+    if nike_table_exists:
+        processed_nike_files = set(pd.read_sql(
+            "SELECT file_path FROM nike_raw",
+            conn,
+        )["file_path"])
+        nike_raw = nike_raw[~nike_raw["file_path"].isin(processed_nike_files)]
+
+    nike_last_sync = None
+    if clean_nike_table_exists:
+        last_nike_sync_value = pd.read_sql(
+            "SELECT MAX(timestamp) AS last_sync FROM clean_nike_data",
+            conn,
+        ).loc[0, "last_sync"]
+        if pd.notna(last_nike_sync_value):
+            nike_last_sync = pd.to_datetime(last_nike_sync_value)
+
+    if nike_last_sync is not None:
+        nike_timestamps = pd.to_datetime(
+            nike_raw["start_time_utc"],
+            utc=True,
+        ).dt.tz_localize(None)
+        nike_raw = nike_raw[nike_timestamps > nike_last_sync]
 
 # standardized nike run club data
-clean_nike_data = clean_nike_data.rename(columns={
+clean_nike_data = nike_raw.copy().rename(columns={
     'start_time_utc':'timestamp',
-    'average_cadence_rpm':'average_cadence',
+    'avg_cadence_rpm':'average_cadence',
     'sport':'activity_type',
     'distance_m':'distance_miles',
     'total_time_s':'total_time_min'
@@ -464,9 +490,19 @@ clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%
 
 clean_nike_data = clean_nike_data.drop_duplicates(subset=['file_path'])
 
-nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
-clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
-clean_nike_data.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_nike_data.csv', index=False)
+if MODE == "batch":
+    nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
+    clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
+else:
+    nike_raw.to_sql('nike_raw', conn, if_exists='append', index=False)
+    existing_nike_files = pd.read_sql(
+        "SELECT file_path FROM clean_nike_data",
+        conn,
+    )["file_path"] if clean_nike_table_exists else pd.Series(dtype=object)
+    clean_nike_data = clean_nike_data[
+        ~clean_nike_data["file_path"].isin(existing_nike_files)
+    ]
+    clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
 
 combined_datasets = pd.read_sql("""
     SELECT

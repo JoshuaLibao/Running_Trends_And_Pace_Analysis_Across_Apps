@@ -1,9 +1,8 @@
-import argparse
-import csv
 import os
-from dataclasses import dataclass
+import warnings
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
-from typing import Dict, Iterable, Iterator, List, Optional, Tuple
+from typing import Dict, Iterator, List, Optional
 from xml.etree import ElementTree as ET
 import pandas as pd
 
@@ -212,34 +211,21 @@ def _read_tcx(file_path: str) -> Optional[ET.Element]:
         return None
 
 
-def write_summary_csv(input_dir: str, output_csv: str, conn) -> Tuple[int, int]:
+def read_summary_dataframe(input_dir: str) -> pd.DataFrame:
     rows: List[ActivitySummary] = []
-
-    # get processed files
-    existing_files = pd.read_sql(
-        "SELECT file_path FROM processed_tcx_files",
-        conn)
-    processed_set = set(existing_files["file_path"])
-
-    # filter new files
-    all_files = list(_walk_tcx_files(input_dir))
-    new_files = [str(fp) for fp in all_files if str(fp) not in processed_set]
-
-    print(f"New TCX files detected: {len(new_files)}")
-
-    ok = 0
-    bad = 0
-
-    for fp in new_files:
+    for fp in _walk_tcx_files(input_dir):
         root = _read_tcx(fp)
         if root is None:
-            bad += 1
+            warnings.warn(
+                f"Skipping malformed or unreadable TCX file: {fp}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
             continue
 
-        ok += 1
         rows.extend(_parse_activity_summary(root, fp))
 
-    fieldnames = [
+    columns = [
         "file_path",
         "activity_id",
         "sport",
@@ -251,42 +237,26 @@ def write_summary_csv(input_dir: str, output_csv: str, conn) -> Tuple[int, int]:
         "max_hr_bpm",
         "avg_cadence_rpm",
     ]
+    return pd.DataFrame.from_records(
+        (asdict(row) for row in rows),
+        columns=columns,
+    )
 
-    with open(output_csv, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        for r in rows:
-            w.writerow({
-                "file_path": r.file_path,
-                "activity_id": r.activity_id,
-                "sport": r.sport,
-                "start_time_utc": r.start_time_utc,
-                "total_time_s": r.total_time_s,
-                "distance_m": r.distance_m,
-                "calories": r.calories,
-                "avg_hr_bpm": r.avg_hr_bpm,
-                "max_hr_bpm": r.max_hr_bpm,
-                "avg_cadence_rpm": r.avg_cadence_rpm,
-            })
 
-    # mark processed
-    if new_files:
-        pd.DataFrame({"file_path": new_files}).to_sql(
-            "processed_tcx_files",
-            conn,
-            if_exists="append",
-            index=False
-        )
+def read_trackpoints_dataframe(input_dir: str) -> pd.DataFrame:
+    rows: List[Dict[str, object]] = []
+    for fp in _walk_tcx_files(input_dir):
+        root = _read_tcx(fp)
+        if root is None:
+            warnings.warn(
+                f"Skipping malformed or unreadable TCX file: {fp}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
+            continue
+        rows.extend(_parse_trackpoints(root, fp))
 
-    return ok, bad
-
-def write_trackpoints_csv(input_dir: str, output_csv: str) -> Tuple[int, int, int]:
-    files = list(_walk_tcx_files(input_dir))
-    ok = 0
-    bad = 0
-    tp_count = 0
-
-    fieldnames = [
+    columns = [
         "file_path",
         "activity_id",
         "sport",
@@ -298,56 +268,5 @@ def write_trackpoints_csv(input_dir: str, output_csv: str) -> Tuple[int, int, in
         "heart_rate_bpm",
         "cadence_rpm",
     ]
-
-    with open(output_csv, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        for fp in files:
-            root = _read_tcx(fp)
-            if root is None:
-                bad += 1
-                continue
-            ok += 1
-            for row in _parse_trackpoints(root, fp):
-                w.writerow(row)
-                tp_count += 1
-
-    return ok, bad, tp_count
-
-
-def main() -> int:
-    p = argparse.ArgumentParser(
-        description="Merge Nike Run Club (TCX) files into a single CSV."
-    )
-    p.add_argument("input_dir", help="Folder containing .tcx files (recursively searched).")
-    p.add_argument("output_csv", help="Path to write the merged CSV.")
-    p.add_argument(
-        "--mode",
-        choices=["summary", "trackpoints"],
-        default="summary",
-        help="summary = one row per activity; trackpoints = one row per trackpoint.",
-    )
-    args = p.parse_args()
-
-    input_dir = os.path.abspath(args.input_dir)
-    output_csv = os.path.abspath(args.output_csv)
-
-    if not os.path.isdir(input_dir):
-        raise SystemExit(f"Input directory not found: {input_dir}")
-
-    if args.mode == "summary":
-        ok, bad = write_summary_csv(input_dir, output_csv)
-        print(f"Wrote {output_csv}")
-        print(f"Parsed: {ok} files; skipped (bad XML/unreadable): {bad} files")
-    else:
-        ok, bad, tp_count = write_trackpoints_csv(input_dir, output_csv)
-        print(f"Wrote {output_csv}")
-        print(f"Parsed: {ok} files; skipped (bad XML/unreadable): {bad} files")
-        print(f"Trackpoints written: {tp_count}")
-
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+    return pd.DataFrame.from_records(rows, columns=columns)
 
