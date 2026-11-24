@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 
-load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\.env.txt'))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(PROJECT_ROOT / "data" / ".env.txt")
 
 # get your athlete ID
 response = requests.post('https://www.strava.com/oauth/token', data={
@@ -18,7 +19,7 @@ athlete_id = 116622583
 refresh_token = os.getenv('STRAVA_REFRESH_TOKEN')
 
 # insert yourself into the DB
-conn = sqlite3.connect(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db')
+conn = sqlite3.connect(PROJECT_ROOT / "data" / "runs_summary.db")
 conn.execute('INSERT INTO users (external_athlete_id, source, refresh_token) VALUES (?, ?, ?)',
              (athlete_id, 'Strava', refresh_token))
 conn.commit()

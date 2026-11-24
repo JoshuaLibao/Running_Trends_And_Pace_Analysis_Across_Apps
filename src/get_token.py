@@ -3,7 +3,10 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 
-load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\.env.txt'))
+_THIS_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = _THIS_DIR.parent  # run_performance_analysis/
+
+load_dotenv(PROJECT_ROOT / "data" / ".env.txt")
 
 response = requests.post('https://www.strava.com/oauth/token', data={
     'client_id': os.getenv('STRAVA_CLIENT_ID'),

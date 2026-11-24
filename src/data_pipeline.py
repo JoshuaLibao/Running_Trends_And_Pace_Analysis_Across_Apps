@@ -25,9 +25,16 @@ strava_api = StravaRateTracker(
     state_file=str(_THIS_DIR.parent / "data" / "processed" / "strava_rate_state.json")
 )
  
-load_dotenv(Path(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\.env.txt'))
- 
-db_path = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\runs_summary.db'
+PROJECT_ROOT = _THIS_DIR.parent  # run_performance_analysis/
+
+load_dotenv(PROJECT_ROOT / "data" / ".env.txt")
+env_path = PROJECT_ROOT / "data" / ".env.txt"
+print("env file exists:", env_path.exists())
+print("client id loaded:", os.getenv("STRAVA_CLIENT_ID") is not None)
+print("client secret loaded:", os.getenv("STRAVA_CLIENT_SECRET") is not None)
+print("refresh token loaded:", os.getenv("STRAVA_REFRESH_TOKEN") is not None)   
+
+db_path = str(PROJECT_ROOT / "data" / "runs_summary.db")
 conn = sqlite3.connect(db_path)
 
 cursor = conn.cursor()
@@ -59,7 +66,10 @@ def get_access_token():
         'refresh_token': os.getenv('STRAVA_REFRESH_TOKEN'),
         'grant_type': 'refresh_token'
     })
-    return response.json()['access_token']
+    payload = response.json()
+    if 'access_token' not in payload:
+        print("Strava token error:", response.status_code, payload)
+    return payload['access_token']
 
 def get_activities(access_token, after_timestamp, conn):
     activities = []
@@ -69,7 +79,7 @@ def get_activities(access_token, after_timestamp, conn):
     all_best_efforts = []
     page = 1
     detail_requests = 0
-    max_detail_requests = 50
+    max_detail_requests = 20
     detail_request_cap_logged = False
 
     print("FILTER:", after_timestamp)
@@ -382,7 +392,7 @@ def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_
             ~clean_strava_data["activity_id"].isin(existing_ids["activity_id"])
         ]
         clean_strava_data.to_csv(
-            r"C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\clean_strava_data.csv",
+            PROJECT_ROOT / "data" / "processed" / "clean_strava_data.csv",
             index=False,)
         processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="append", index=False)
         if not current_prs_df.empty:
@@ -414,7 +424,7 @@ else:
     print(f"Strava processing: {time.time() - t3} seconds")
     write_strava_data(strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df, conn)
 
-input_dir = r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\raw\tcx'
+input_dir = str(PROJECT_ROOT / "data" / "raw" / "tcx")
 
 t4 = time.time()
 nike_raw = read_summary_dataframe(input_dir)
@@ -579,7 +589,10 @@ combined_datasets_final['month'] = pd.to_datetime(combined_datasets_final['times
 combined_datasets_final['year'] = pd.to_datetime(combined_datasets_final['timestamp']).dt.year
 combined_datasets_final['year'] = combined_datasets_final['year'].astype(int)
 combined_datasets_final.to_sql('combined_datasets_final', conn, if_exists='replace', index=False)
-combined_datasets_final.to_csv(r'C:\Users\12063\Downloads\sqlite\run_performance_analysis\data\processed\combined_datasets_final.csv', index=False)
+combined_datasets_final.to_csv(
+    PROJECT_ROOT / "data" / "processed" / "combined_datasets_final.csv",
+    index=False,
+)
 
 dashboard_overview = pd.read_sql("""
     SELECT 
