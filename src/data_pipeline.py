@@ -46,7 +46,7 @@ cursor.execute(
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
-MODE = "batch" # "incremental" or "batch"
+MODE = "incremental" # "incremental" or "batch"
 NIKE_MODE = "incremental" # "incremental" or "batch"; keep aligned with tcx_to_csv.MODE
 
 if MODE == "incremental":
@@ -277,8 +277,8 @@ def get_activities(access_token, after_timestamp, conn):
         all_best_efforts = pd.concat(all_best_efforts, ignore_index=True)
         if not all_best_efforts.empty:
             current_prs_df = (
-                all_best_efforts[all_best_efforts["pr_rank"] == 1]
-                .sort_values("start_date")
+                all_best_efforts
+                .sort_values("elapsed_time")
                 .groupby("distance", as_index=False)
                 .first()
             )
