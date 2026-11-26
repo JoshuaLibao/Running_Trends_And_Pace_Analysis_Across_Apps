@@ -2,9 +2,24 @@ import os
 import warnings
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
-from typing import Dict, Iterator, List, Optional
+from typing import Dict, Iterable, Iterator, List, Optional, Tuple
 from xml.etree import ElementTree as ET
 import pandas as pd
+
+MODE = "batch"  # "incremental" or "batch"
+
+_SUMMARY_COLUMNS = [
+    "file_path",
+    "activity_id",
+    "sport",
+    "start_time_utc",
+    "total_time_s",
+    "distance_m",
+    "calories",
+    "avg_hr_bpm",
+    "max_hr_bpm",
+    "avg_cadence_rpm",
+]
 
 
 def _strip_ns(tag: str) -> str:
@@ -211,9 +226,12 @@ def _read_tcx(file_path: str) -> Optional[ET.Element]:
         return None
 
 
-def read_summary_dataframe(input_dir: str) -> pd.DataFrame:
+def _read_summary_dataframe(
+    file_paths: Iterable[str],
+) -> Tuple[pd.DataFrame, List[str]]:
     rows: List[ActivitySummary] = []
-    for fp in _walk_tcx_files(input_dir):
+    parsed_file_paths: List[str] = []
+    for fp in file_paths:
         root = _read_tcx(fp)
         if root is None:
             warnings.warn(
@@ -223,24 +241,55 @@ def read_summary_dataframe(input_dir: str) -> pd.DataFrame:
             )
             continue
 
+        parsed_file_paths.append(fp)
         rows.extend(_parse_activity_summary(root, fp))
 
-    columns = [
-        "file_path",
-        "activity_id",
-        "sport",
-        "start_time_utc",
-        "total_time_s",
-        "distance_m",
-        "calories",
-        "avg_hr_bpm",
-        "max_hr_bpm",
-        "avg_cadence_rpm",
-    ]
-    return pd.DataFrame.from_records(
-        (asdict(row) for row in rows),
-        columns=columns,
+    dataframe = pd.DataFrame.from_records(
+        (asdict(row) for row in rows), columns=_SUMMARY_COLUMNS
     )
+    return dataframe, parsed_file_paths
+
+
+def read_summary_dataframe(input_dir: str) -> pd.DataFrame:
+    dataframe, _ = _read_summary_dataframe(_walk_tcx_files(input_dir))
+    return dataframe
+
+
+def process_tcx_files(input_dir: str, conn, mode: Optional[str] = None) -> pd.DataFrame:
+    processing_mode = MODE if mode is None else mode
+    if processing_mode not in {"batch", "incremental"}:
+        raise ValueError("mode must be either 'batch' or 'incremental'")
+
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS process_tcx_files (
+            file_name TEXT PRIMARY KEY
+        )
+        """
+    )
+
+    if processing_mode == "batch":
+        conn.execute("DELETE FROM process_tcx_files")
+        file_paths = list(_walk_tcx_files(input_dir))
+    else:
+        processed_file_names = {
+            row[0] for row in conn.execute("SELECT file_name FROM process_tcx_files")
+        }
+        file_paths = [
+            file_path
+            for file_path in _walk_tcx_files(input_dir)
+            if os.path.basename(file_path) not in processed_file_names
+        ]
+        if not file_paths:
+            print("No new TCX files. Skipping TCX parsing.")
+            return pd.DataFrame(columns=_SUMMARY_COLUMNS)
+
+    dataframe, parsed_file_paths = _read_summary_dataframe(file_paths)
+    conn.executemany(
+        "INSERT OR IGNORE INTO process_tcx_files (file_name) VALUES (?)",
+        ((os.path.basename(file_path),) for file_path in parsed_file_paths),
+    )
+    return dataframe
 
 
 def read_trackpoints_dataframe(input_dir: str) -> pd.DataFrame:

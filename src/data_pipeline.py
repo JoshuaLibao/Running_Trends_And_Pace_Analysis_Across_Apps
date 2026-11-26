@@ -17,8 +17,8 @@ start_time = time.time()
 _THIS_DIR = Path(__file__).resolve().parent
 if str(_THIS_DIR) not in sys.path:
     sys.path.insert(0, str(_THIS_DIR))
- 
-from tcx_to_csv import read_summary_dataframe
+
+from tcx_to_csv import process_tcx_files
 from strava_client import StravaRateTracker
 
 strava_api = StravaRateTracker(
@@ -47,6 +47,7 @@ row = cursor.fetchone()
 last_sync = row[0] if row else None
 
 MODE = "batch" # "incremental" or "batch"
+NIKE_MODE = "batch" # "incremental" or "batch"; keep aligned with tcx_to_csv.MODE
 
 if MODE == "incremental":
     after_timestamp = last_sync
@@ -427,99 +428,78 @@ else:
 input_dir = str(PROJECT_ROOT / "data" / "raw" / "tcx")
 
 t4 = time.time()
-nike_raw = read_summary_dataframe(input_dir)
+nike_raw = process_tcx_files(input_dir, conn)
 print(f"TCX processing: {time.time() - t4:.2f} seconds")
 
-nike_table_exists = conn.execute(
-    "SELECT 1 FROM sqlite_master WHERE type='table' AND name='nike_raw'"
-).fetchone()
-clean_nike_table_exists = conn.execute(
+if nike_raw.empty:
+    print("Nike data is empty. Skipping Nike cleaning and storage.")
+else:
+    # standardized nike run club data
+    clean_nike_data = nike_raw.copy().rename(columns={
+        'start_time_utc':'timestamp',
+        'avg_cadence_rpm':'average_cadence',
+        'sport':'activity_type',
+        'distance_m':'distance_miles',
+        'total_time_s':'total_time_min'
+        })
+    clean_nike_data['timestamp'] = pd.to_datetime(
+        clean_nike_data['timestamp']
+    )
+    clean_nike_data['source'] = 'Nike'
+
+    # converted timestamp column from: timezone-aware -> timezone-native
+    clean_nike_data['timestamp'] = (
+        pd.to_datetime(clean_nike_data['timestamp'], utc=True)
+          .dt.tz_convert('America/Los_Angeles')
+          .dt.tz_localize(None)
+    )
+
+    # separated start date and time
+    clean_nike_data['start_date'] = clean_nike_data['timestamp'].dt.date
+    clean_nike_data['start_time'] = clean_nike_data['timestamp'].dt.time
+
+    # standardized distance units: meters -> miles
+    clean_nike_data['distance_miles'] = clean_nike_data['distance_miles'] / 1609.34
+
+    # standardized time units: seconds -> minutes
+    clean_nike_data['total_time_min'] = clean_nike_data['total_time_min'] / 60
+
+    # validated nike run club data
+    clean_nike_data = clean_nike_data[
+        (clean_nike_data['timestamp'] <= now) &
+        (clean_nike_data['total_time_min'] > 0) &
+        (clean_nike_data['distance_miles'] > 0) &
+        (clean_nike_data['activity_type'] == 'Running')
+    ]
+
+    # standardize timestamp entry format
+    clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
+
+    clean_nike_data = clean_nike_data.drop_duplicates(subset=['file_path'])
+
+    nike_write_mode = "replace" if NIKE_MODE == "batch" else "append"
+    nike_raw.to_sql('nike_raw', conn, if_exists=nike_write_mode, index=False)
+    clean_nike_data.to_sql(
+        'clean_nike_data', conn, if_exists=nike_write_mode, index=False
+    )
+
+nike_clean_table_exists = conn.execute(
     "SELECT 1 FROM sqlite_master WHERE type='table' AND name='clean_nike_data'"
 ).fetchone()
+nike_union = """
+    UNION ALL
+    SELECT
+        activity_id,
+        timestamp,
+        distance_miles,
+        total_time_min,
+        activity_type,
+        total_time_min/distance_miles AS pace,
+        source
+    FROM clean_nike_data
+""" if nike_clean_table_exists else ""
 
-if MODE == "incremental":
-    if nike_table_exists:
-        processed_nike_files = set(pd.read_sql(
-            "SELECT file_path FROM nike_raw",
-            conn,
-        )["file_path"])
-        nike_raw = nike_raw[~nike_raw["file_path"].isin(processed_nike_files)]
-
-    nike_last_sync = None
-    if clean_nike_table_exists:
-        last_nike_sync_value = pd.read_sql(
-            "SELECT MAX(timestamp) AS last_sync FROM clean_nike_data",
-            conn,
-        ).loc[0, "last_sync"]
-        if pd.notna(last_nike_sync_value):
-            nike_last_sync = pd.to_datetime(last_nike_sync_value)
-
-    if nike_last_sync is not None:
-        nike_timestamps = (
-            pd.to_datetime(nike_raw["start_time_utc"], utc=True)
-            .dt.ez_convert('America/Los_Angeles')
-            .dt.tz_localize(None)
-        )
-        nike_raw = nike_raw[nike_timestamps > nike_last_sync]
-
-# standardized nike run club data
-clean_nike_data = nike_raw.copy().rename(columns={
-    'start_time_utc':'timestamp',
-    'avg_cadence_rpm':'average_cadence',
-    'sport':'activity_type',
-    'distance_m':'distance_miles',
-    'total_time_s':'total_time_min'
-    })
-clean_nike_data['timestamp'] = pd.to_datetime(
-    clean_nike_data['timestamp']
-)
-clean_nike_data['source'] = 'Nike'
-
-# converted timestamp column from: timezone-aware -> timezone-native
-clean_nike_data['timestamp'] = (
-    pd.to_datetime(clean_nike_data['timestamp'], utc=True)
-      .dt.tz_convert('America/Los_Angeles')
-      .dt.tz_localize(None)
-)
-
-# separated start date and time
-clean_nike_data['start_date'] = clean_nike_data['timestamp'].dt.date
-clean_nike_data['start_time'] = clean_nike_data['timestamp'].dt.time
-
-# standardized distance units: meters -> miles
-clean_nike_data['distance_miles'] = clean_nike_data['distance_miles'] / 1609.34
-
-# standardized time units: seconds -> minutes
-clean_nike_data['total_time_min'] = clean_nike_data['total_time_min'] / 60
-
-# validated nike run club data
-clean_nike_data = clean_nike_data[
-    (clean_nike_data['timestamp'] <= now) &
-    (clean_nike_data['total_time_min'] > 0) &
-    (clean_nike_data['distance_miles'] > 0) &
-    (clean_nike_data['activity_type'] == 'Running')
-]
-
-# standardize timestamp entry format
-clean_nike_data['timestamp'] = clean_nike_data['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
-
-clean_nike_data = clean_nike_data.drop_duplicates(subset=['file_path'])
-
-if MODE == "batch":
-    nike_raw.to_sql('nike_raw', conn, if_exists='replace', index=False)
-    clean_nike_data.to_sql('clean_nike_data', conn, if_exists='replace', index=False)
-else:
-    nike_raw.to_sql('nike_raw', conn, if_exists='append', index=False)
-    existing_nike_files = pd.read_sql(
-        "SELECT file_path FROM clean_nike_data",
-        conn,
-    )["file_path"] if clean_nike_table_exists else pd.Series(dtype=object)
-    clean_nike_data = clean_nike_data[
-        ~clean_nike_data["file_path"].isin(existing_nike_files)
-    ]
-    clean_nike_data.to_sql('clean_nike_data', conn, if_exists='append', index=False)
-
-combined_datasets = pd.read_sql("""
+combined_datasets = pd.read_sql(f"""
     SELECT
         activity_id, 
         timestamp, 
@@ -529,16 +509,7 @@ combined_datasets = pd.read_sql("""
         total_time_min/distance_miles AS pace, 
         source
     FROM clean_strava_data
-    UNION ALL
-    SELECT 
-        activity_id,
-        timestamp, 
-        distance_miles, 
-        total_time_min, 
-        activity_type, 
-        total_time_min/distance_miles AS pace, 
-        source
-    FROM clean_nike_data
+    {nike_union}
 """, conn)
 combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
 

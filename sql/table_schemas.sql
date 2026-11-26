@@ -2,6 +2,9 @@
 --====================
 
 BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "process_tcx_files" (
+  "file_name" TEXT PRIMARY KEY
+);
 CREATE TABLE IF NOT EXISTS "dashboard_overview" (
 "total_runs" INTEGER,
   "total_distance_miles" REAL,
