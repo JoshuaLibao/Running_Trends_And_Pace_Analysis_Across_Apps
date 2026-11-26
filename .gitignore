@@ -1,8 +1,2 @@
 data/.env.txt
-data/runs_summary.db
-data/runs_summary.db
-data/processed/strava_rate_state.json
-__pycache__/
-data/runs_summary.db
-data/processed/strava_rate_state.json
 __pycache__/

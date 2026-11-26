@@ -47,7 +47,7 @@ row = cursor.fetchone()
 last_sync = row[0] if row else None
 
 MODE = "batch" # "incremental" or "batch"
-NIKE_MODE = "batch" # "incremental" or "batch"; keep aligned with tcx_to_csv.MODE
+NIKE_MODE = "incremental" # "incremental" or "batch"; keep aligned with tcx_to_csv.MODE
 
 if MODE == "incremental":
     after_timestamp = last_sync
@@ -80,7 +80,7 @@ def get_activities(access_token, after_timestamp, conn):
     all_best_efforts = []
     page = 1
     detail_requests = 0
-    max_detail_requests = 20
+    max_detail_requests = 190
     detail_request_cap_logged = False
 
     print("FILTER:", after_timestamp)
@@ -729,7 +729,7 @@ current_prs_clean = pd.read_sql("""
 """, conn)
 current_prs_clean.to_sql("current_prs_clean", conn, if_exists='replace', index=False)
 
-print(current_prs_raw[["name","elapsed_time","distance"]].head(5))
+print(current_prs_raw[["name","elapsed_time","pace"]].head(5))
 
 conn.commit()
 conn.close()

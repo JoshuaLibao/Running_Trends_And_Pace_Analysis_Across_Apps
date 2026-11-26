@@ -6,7 +6,7 @@ from typing import Dict, Iterable, Iterator, List, Optional, Tuple
 from xml.etree import ElementTree as ET
 import pandas as pd
 
-MODE = "batch"  # "incremental" or "batch"
+MODE = "incremental"  # "incremental" or "batch"
 
 _SUMMARY_COLUMNS = [
     "file_path",
