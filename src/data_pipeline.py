@@ -1,8 +1,6 @@
-from multiprocessing import current_process
-from typing import Any
 import pandas as pd
 import sqlite3
-from datetime import datetime, timedelta
+from datetime import datetime
 import sys
 from pathlib import Path
 import requests
@@ -11,6 +9,15 @@ from dotenv import load_dotenv
 import time
 
 start_time = time.time()
+
+# Per-execution request budgets; list pages and individual detail lookups count separately.
+ACTIVITIES_API_RATE_LIMIT = 100
+ACTIVITY_DETAILS_API_RATE_LIMIT = 150
+activities_api_requests = 0
+activity_details_api_requests = 0
+strava_rate_limit_hit = False
+ACTIVITIES_SCAN_RESUMED = False
+ACTIVITIES_SCAN_INCOMPLETE = False
  
 # Ensure local `src/` modules (like `tcx_to_csv.py`) are importable even when
 # running this script from a different working directory.
@@ -19,7 +26,7 @@ if str(_THIS_DIR) not in sys.path:
     sys.path.insert(0, str(_THIS_DIR))
 
 from tcx_to_csv import process_tcx_files
-from strava_client import StravaRateTracker
+from strava_client import StravaRateLimitError, StravaRateTracker
 
 strava_api = StravaRateTracker(
     state_file=str(_THIS_DIR.parent / "data" / "processed" / "strava_rate_state.json")
@@ -73,42 +80,186 @@ def get_access_token():
     return payload['access_token']
 
 def get_activities(access_token, after_timestamp, conn):
+    global activities_api_requests
+    global activity_details_api_requests
+    global strava_rate_limit_hit
+    global ACTIVITIES_SCAN_RESUMED
+    global ACTIVITIES_SCAN_INCOMPLETE
+
+    if any(
+        not isinstance(limit, int) or isinstance(limit, bool) or limit < 0
+        for limit in (ACTIVITIES_API_RATE_LIMIT, ACTIVITY_DETAILS_API_RATE_LIMIT)
+    ):
+        raise ValueError("Strava endpoint request limits must be non-negative integers.")
+
     activities = []
     activity_details_list = []
     processed_activity_details_list = []
     current_prs_df = pd.DataFrame()
     all_best_efforts = []
-    page = 1
-    detail_requests = 0
-    max_detail_requests = 50
-    detail_request_cap_logged = False
+    missing = set()
+    unexpected = set()
+
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS strava_pending_activity_details "
+        "(activity_id TEXT PRIMARY KEY)"
+    )
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS strava_pipeline_state "
+        "(key TEXT PRIMARY KEY, value TEXT NOT NULL)"
+    )
+
+    processed_table_exists = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' "
+        "AND name='processed_activity_details'"
+    ).fetchone()
+    if processed_table_exists:
+        processed_activity_details = pd.read_sql(
+            "SELECT id, type FROM processed_activity_details", conn
+        )
+        processed_activity_ids = set(
+            processed_activity_details["id"].dropna().astype(str)
+        )
+    else:
+        processed_activity_ids = set()
+
+    if processed_activity_ids:
+        conn.executemany(
+            "DELETE FROM strava_pending_activity_details WHERE activity_id = ?",
+            [(activity_id,) for activity_id in processed_activity_ids],
+        )
+
+    saved_cursor = conn.execute(
+        "SELECT value FROM strava_pipeline_state "
+        "WHERE key = 'activities_next_page'"
+    ).fetchone()
+    page = int(saved_cursor[0]) if saved_cursor else 1
+    saved_before = conn.execute(
+        "SELECT value FROM strava_pipeline_state "
+        "WHERE key = 'activities_scan_before'"
+    ).fetchone()
+    scan_before = (
+        int(saved_before[0])
+        if saved_cursor and saved_before
+        else int(time.time())
+    )
+    ACTIVITIES_SCAN_RESUMED = page > 1
+    ACTIVITIES_SCAN_INCOMPLETE = ACTIVITIES_SCAN_RESUMED
+
+    def save_activities_cursor(next_page):
+        conn.executemany(
+            "INSERT OR REPLACE INTO strava_pipeline_state (key, value) VALUES (?, ?)",
+            [
+                ("activities_next_page", str(next_page)),
+                ("activities_scan_before", str(scan_before)),
+            ],
+        )
+        conn.commit()
+
+    def process_pending_details():
+        global activity_details_api_requests
+        global strava_rate_limit_hit
+        global ACTIVITIES_SCAN_INCOMPLETE
+
+        pending_ids = conn.execute(
+            "SELECT activity_id FROM strava_pending_activity_details ORDER BY rowid"
+        ).fetchall()
+        for (activity_id,) in pending_ids:
+            if str(activity_id) in processed_activity_ids:
+                continue
+            if activity_details_api_requests >= ACTIVITY_DETAILS_API_RATE_LIMIT:
+                print(
+                    "Activity-details request limit reached "
+                    f"({ACTIVITY_DETAILS_API_RATE_LIMIT}); pending IDs are saved for the next run."
+                )
+                return
+
+            activity_details_api_requests += 1
+            try:
+                activity_response = strava_api.get(
+                    f"https://www.strava.com/api/v3/activities/{activity_id}",
+                    headers={"Authorization": f"Bearer {access_token}"},
+                )
+            except StravaRateLimitError:
+                strava_rate_limit_hit = True
+                ACTIVITIES_SCAN_INCOMPLETE = True
+                print(
+                    "Strava rate limit returned HTTP 429; stopping API requests "
+                    "for this execution. Pending activity details remain queued."
+                )
+                return
+
+            activity_detail = activity_response.json()
+            if not isinstance(activity_detail, dict) or "id" not in activity_detail:
+                raise ValueError(
+                    f"Unexpected activity-details response for activity {activity_id}."
+                )
+            if str(activity_detail["id"]) != str(activity_id):
+                raise ValueError(
+                    f"Activity-details response ID did not match requested ID {activity_id}."
+                )
+
+            print(f"Processing activity {activity_id}")
+            processed_activity_details_list.append(activity_detail)
+            processed_activity_ids.add(str(activity_detail["id"]))
+            if activity_detail.get("best_efforts"):
+                best_efforts_df = pd.DataFrame(activity_detail["best_efforts"])
+                best_efforts_df["activity_id"] = activity_detail["id"]
+                all_best_efforts.append(best_efforts_df)
+                print("best efforts logged")
+            else:
+                print("best_efforts is empty")
 
     print("FILTER:", after_timestamp)
 
+    # Retry previously queued detail lookups before requesting more activity pages.
+    process_pending_details()
+
     while True:
-        response = strava_api.get(
-            'https://www.strava.com/api/v3/athlete/activities',
-            headers={'Authorization': f'Bearer {access_token}'},
-            params={'per_page': 200, 'page': page}
-        )
+        if strava_rate_limit_hit:
+            break
+        if activities_api_requests >= ACTIVITIES_API_RATE_LIMIT:
+            ACTIVITIES_SCAN_INCOMPLETE = True
+            save_activities_cursor(page)
+            print(
+                "Activities request limit reached "
+                f"({ACTIVITIES_API_RATE_LIMIT}); page {page} is saved for the next run."
+            )
+            break
+
+        activities_api_requests += 1
+        try:
+            response = strava_api.get(
+                'https://www.strava.com/api/v3/athlete/activities',
+                headers={'Authorization': f'Bearer {access_token}'},
+                params={'per_page': 200, 'page': page, 'before': scan_before}
+            )
+        except StravaRateLimitError:
+            strava_rate_limit_hit = True
+            ACTIVITIES_SCAN_INCOMPLETE = True
+            save_activities_cursor(page)
+            print(
+                "Strava rate limit returned HTTP 429; stopping API requests "
+                "for this execution."
+            )
+            break
         
         print(f"RESPONSE STATUS CODE: {response.status_code}")
 
         data = response.json()
 
         if not isinstance(data, list):
-            print("Strava error payload:", data)
-            break
+            raise ValueError(f"Unexpected Strava activities response: {data}")
 
         if not data:
+            conn.execute(
+                "DELETE FROM strava_pipeline_state "
+                "WHERE key IN ('activities_next_page', 'activities_scan_before')"
+            )
+            conn.commit()
             break
         
         print(f"PAGE {page} LENGTH:", len(data))
-
-        processed_activity_details = pd.read_sql("""
-            SELECT id, type
-            FROM processed_activity_details
-        """, conn)
 
 # expected strava_raw db schema
         strava_raw_schema = {
@@ -173,9 +324,6 @@ def get_activities(access_token, after_timestamp, conn):
             "suffer_score"   
         }
 
-        # turn processed_activity_ids into a set
-        processed_activity_ids = set[Any](processed_activity_details["id"])
-
         # turn raw strava data into a set
         strava_raw_column_names = set()
 
@@ -189,89 +337,54 @@ def get_activities(access_token, after_timestamp, conn):
             print("Expected columns missing:", sorted(missing))
         if unexpected:
             print("Unexpected columns:", sorted(unexpected))
-            
+
+        queued_ids = []
         for act in data:
-            if MODE == "incremental" and after_timestamp is not None:
-                act_time = datetime.fromisoformat(
-                    act['start_date_local'].replace('Z', '+00:00')
-                ).replace(tzinfo=None)
-
-                if act_time <= after_timestamp:
-                    continue
-
-            activity_id = act["id"]
-            if MODE == "incremental" and activity_id in processed_activity_ids:
-                print("activity already logged! moving onto next activity")
-                continue
-
-            if act["type"] != 'Run':
-                print("this activity is not a run! moving onto next activity")
-                continue
-
-            if detail_requests >= max_detail_requests:
-                if not detail_request_cap_logged:
-                    print(
-                        f"Test detail-request cap reached ({max_detail_requests}); "
-                        "continuing to collect activity pages without fetching more details."
-                    )
-                    detail_request_cap_logged = True
-                continue
-
-            activity_response = strava_api.get(
-                f"https://www.strava.com/api/v3/activities/{activity_id}",
-                headers={"Authorization": f"Bearer {access_token}"}
+            if act.get("type") == "Run" and str(act["id"]) not in processed_activity_ids:
+                queued_ids.append((str(act["id"]),))
+        if queued_ids:
+            conn.executemany(
+                "INSERT OR IGNORE INTO strava_pending_activity_details (activity_id) "
+                "VALUES (?)",
+                queued_ids,
             )
-
-            print(f"ACTIVITY_RESPONSE STATUS CODE: {activity_response.status_code}")
-            print(f"Processing activity {activity_id}")
-
-            activity_detail = activity_response.json()
-            processed_activity_details_list.append(activity_detail)
-            detail_requests += 1
-            print(
-                f"Strava rate usage: {strava_api.usage_15}/{strava_api.limit_15} "
-                f"(15 min), {strava_api.usage_day}/{strava_api.limit_day} (daily)"
-            )
-
-            if activity_detail.get("best_efforts"):
-                best_efforts_df = pd.DataFrame(activity_detail["best_efforts"])
-                best_efforts_df["activity_id"] = activity_detail["id"]
-                all_best_efforts.append(best_efforts_df)
-                print("best efforts logged")
-            else:
-                print("best_efforts is empty")
+            conn.commit()
+        process_pending_details()
 
         print(f"activity_detail data type: {type(activity_details_list)}")
         print(f"tuple length: {len(activity_details_list)}")
         
         # filters data after the last sync date
-        if MODE == "incremental" and after_timestamp is not None:
+        if (
+            MODE == "incremental"
+            and after_timestamp is not None
+            and not ACTIVITIES_SCAN_RESUMED
+        ):
             filtered_data = []
 
-            if not isinstance(data, list):
-                print("Strava error payload:", data)
-                break   # or raise
-
             for act in data:
-                
                 act_time = datetime.fromisoformat(
                     act['start_date_local'].replace('Z', '+00:00')
                 ).replace(tzinfo=None)
-
-                print("----")
-                print("ACTIVITY:", act_time)
-                print("LAST_SYNC", after_timestamp)
-                print("COMPARE:", act_time > after_timestamp if after_timestamp else "NO FILTER")
-
                 if act_time > after_timestamp:
                     filtered_data.append(act)
 
             activities.extend(filtered_data)
-
         else:
             activities.extend(data)
 
+        if strava_rate_limit_hit:
+            ACTIVITIES_SCAN_INCOMPLETE = True
+            save_activities_cursor(page + 1)
+            break
+
         page += 1
+
+    print(
+        "Per-execution Strava API requests: "
+        f"{activities_api_requests}/{ACTIVITIES_API_RATE_LIMIT} activities pages, "
+        f"{activity_details_api_requests}/{ACTIVITY_DETAILS_API_RATE_LIMIT} activity details"
+    )
 
     if all_best_efforts:
         all_best_efforts = pd.concat(all_best_efforts, ignore_index=True)
@@ -379,25 +492,69 @@ def process_strava(activities, processed_activity_details_list, current_prs_df):
     return strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df
 
 def write_strava_data(strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df, conn):
-    if MODE == "batch":
+    full_batch = MODE == "batch" and not ACTIVITIES_SCAN_INCOMPLETE
+    if full_batch:
         clean_strava_data.to_sql("clean_strava_data", conn, if_exists="replace", index=False)
         strava_raw.to_sql("strava_raw", conn, if_exists="replace", index=False)
-        processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="replace", index=False)
-        current_prs_df.to_sql("current_prs_raw", conn, if_exists="replace",index=False)
-    else:  # incremental
-        clean_strava_data.to_sql("clean_strava_data", conn, if_exists="append", index=False)
-        strava_raw.to_sql("strava_raw", conn, if_exists="append", index=False)
-        clean_strava_data = clean_strava_data.drop_duplicates(subset=["activity_id"])
-        existing_ids = pd.read_sql("SELECT activity_id FROM clean_strava_data", conn)
-        clean_strava_data = clean_strava_data[
-            ~clean_strava_data["activity_id"].isin(existing_ids["activity_id"])
-        ]
+    else:
+        _append_unseen_rows(clean_strava_data, "clean_strava_data", "activity_id", conn)
+        _append_unseen_rows(strava_raw, "strava_raw", "id", conn)
+
+    write_processed_activity_details(processed_activity_details_df, conn)
+
+    if MODE == "batch":
+        if full_batch:
+            current_prs_df.to_sql("current_prs_raw", conn, if_exists="replace", index=False)
+        else:
+            _append_unseen_rows(current_prs_df, "current_prs_raw", "id", conn)
+    else:
         clean_strava_data.to_csv(
             PROJECT_ROOT / "data" / "processed" / "clean_strava_data.csv",
             index=False,)
-        processed_activity_details_df.to_sql("processed_activity_details", conn, if_exists="append", index=False)
         if not current_prs_df.empty:
-            current_prs_df.to_sql("current_prs_raw", conn, if_exists="append", index=False)
+            _append_unseen_rows(current_prs_df, "current_prs_raw", "id", conn)
+
+
+def _append_unseen_rows(frame, table_name, id_column, conn):
+    if frame.empty:
+        return
+    incoming = frame.drop_duplicates(subset=[id_column]).copy()
+    table_exists = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",
+        (table_name,),
+    ).fetchone()
+    if table_exists:
+        existing_ids = pd.read_sql(
+            f'SELECT "{id_column}" FROM "{table_name}"', conn
+        )[id_column].dropna().astype(str)
+        incoming = incoming[~incoming[id_column].astype(str).isin(set(existing_ids))]
+    if not incoming.empty:
+        incoming.to_sql(table_name, conn, if_exists="append", index=False)
+
+
+def write_processed_activity_details(processed_activity_details_df, conn):
+    if not processed_activity_details_df.empty:
+        details = processed_activity_details_df[["id", "type"]].drop_duplicates(
+            subset=["id"]
+        )
+        _append_unseen_rows(
+            details, "processed_activity_details", "id", conn
+        )
+
+    table_exists = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' "
+        "AND name='processed_activity_details'"
+    ).fetchone()
+    if table_exists:
+        processed_ids = pd.read_sql(
+            "SELECT id FROM processed_activity_details", conn
+        )["id"].dropna().astype(str)
+        if not processed_ids.empty:
+            conn.executemany(
+                "DELETE FROM strava_pending_activity_details WHERE activity_id = ?",
+                [(activity_id,) for activity_id in set(processed_ids)],
+            )
+    conn.commit()
 
 t0 = time.time()
 access_token = get_access_token()
@@ -419,6 +576,19 @@ if not activities:
     print("No new Strava activities. Skipping Strava processing.")
     clean_strava_data = None  # empty placeholder
     strava_raw = None
+    if processed_activity_details_list:
+        pending_details_df = pd.DataFrame(processed_activity_details_list)[["id", "type"]]
+        write_processed_activity_details(pending_details_df, conn)
+    if not current_prs_list.empty:
+        pending_prs_df = current_prs_list[
+            ["id", "name", "elapsed_time", "distance"]
+        ].copy()
+        pending_prs_df["elapsed_time_minutes"] = pending_prs_df["elapsed_time"] / 60
+        pending_prs_df["distance_miles"] = pending_prs_df["distance"] / 1609.34
+        pending_prs_df["pace"] = (
+            pending_prs_df["elapsed_time_minutes"] / pending_prs_df["distance_miles"]
+        )
+        _append_unseen_rows(pending_prs_df, "current_prs_raw", "id", conn)
 else:
     t3 = time.time()
     strava_raw, clean_strava_data, processed_activity_details_df, current_prs_df = process_strava(activities, processed_activity_details_list, current_prs_list)
