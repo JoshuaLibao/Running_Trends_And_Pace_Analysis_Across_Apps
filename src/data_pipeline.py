@@ -46,7 +46,7 @@ cursor.execute(
 row = cursor.fetchone()
 last_sync = row[0] if row else None
 
-MODE = "incremental" # "incremental" or "batch"
+MODE = "batch" # "incremental" or "batch"
 NIKE_MODE = "incremental" # "incremental" or "batch"; keep aligned with tcx_to_csv.MODE
 
 if MODE == "incremental":
@@ -80,7 +80,7 @@ def get_activities(access_token, after_timestamp, conn):
     all_best_efforts = []
     page = 1
     detail_requests = 0
-    max_detail_requests = 190
+    max_detail_requests = 50
     detail_request_cap_logged = False
 
     print("FILTER:", after_timestamp)
@@ -513,41 +513,169 @@ combined_datasets = pd.read_sql(f"""
 """, conn)
 combined_datasets.to_sql('combined_datasets', conn, if_exists='replace', index=False)
 
-combined_datasets_final = pd.read_sql("""
-    SELECT 
-        timestamp, 
-        distance_miles, 
-        total_time_min, 
-        activity_type, 
-        pace, 
-        source, 
-        row_number,
-        distance_bucket
-    FROM ( 
-        SELECT
-            timestamp, 
-            distance_miles, 
-            total_time_min, 
-            activity_type, 
-            total_time_min/distance_miles AS pace, 
-            source,
-        CASE 
-            WHEN 0 <= distance_miles AND distance_miles < 3 THEN '0-3'
-            WHEN 3 <= distance_miles AND distance_miles < 6 THEN '3-6'
-            WHEN 6 <= distance_miles AND distance_miles < 10 THEN '6-10'
-            ELSE '10+'
-        END AS distance_bucket,
-            ROW_NUMBER() OVER(
-                PARTITION BY(timestamp) 
-                ORDER BY CASE 
-                    WHEN source = 'Strava' THEN 0
-                    ELSE 1
-                END 
-                ) AS row_number
-            FROM combined_datasets 
+def match_cross_source_activities(
+    activities,
+    timestamp_threshold_minutes=2.0,
+    distance_threshold_miles=0.10,
+    elapsed_threshold_seconds=60.0,
+):
+    """Match one Strava/NRC pair at a time and preserve the raw activity_id values."""
+    matched = activities.copy()
+    if "source" not in matched.columns:
+        raise ValueError("Matching requires a 'source' column.")
+
+    matched["_match_source"] = matched["source"].astype(str).str.strip().str.lower()
+    valid_sources = {"strava", "nike"}
+    unknown_sources = set(matched["_match_source"]) - valid_sources
+    if unknown_sources:
+        raise ValueError(f"Unexpected activity sources: {sorted(unknown_sources)}")
+
+    for required_column in ("timestamp", "distance_miles", "total_time_min"):
+        if required_column not in matched.columns:
+            raise ValueError(f"Matching requires a '{required_column}' column.")
+
+    timestamps = pd.to_datetime(matched["timestamp"], utc=True, errors="coerce")
+    if timestamps.isna().any():
+        raise ValueError("Matching found invalid or missing timestamp values.")
+
+    distance = pd.to_numeric(matched["distance_miles"], errors="coerce")
+    elapsed_minutes = pd.to_numeric(matched["total_time_min"], errors="coerce")
+    elapsed_seconds = elapsed_minutes * 60.0
+    if distance.isna().any() or elapsed_minutes.isna().any():
+        raise ValueError("Matching found invalid or missing distance/elapsed-time values.")
+
+    strava_indexes = list(matched.index[matched["_match_source"] == "strava"])
+    nike_indexes = list(matched.index[matched["_match_source"] == "nike"])
+
+    candidates = []
+    for strava_index in strava_indexes:
+        for nike_index in nike_indexes:
+            timestamp_difference = abs(
+                (timestamps.loc[strava_index] - timestamps.loc[nike_index]).total_seconds()
+            )
+            distance_difference = abs(
+                distance.loc[strava_index] - distance.loc[nike_index]
+            )
+            elapsed_difference = abs(
+                elapsed_seconds.loc[strava_index] - elapsed_seconds.loc[nike_index]
+            )
+
+            # Cross-source matching uses all three thresholds; no same-source candidates are considered.
+            if (
+                timestamp_difference <= timestamp_threshold_minutes * 60.0
+                and distance_difference <= distance_threshold_miles
+                and elapsed_difference <= elapsed_threshold_seconds
+            ):
+                candidates.append(
+                    (
+                        timestamp_difference,
+                        str(matched.loc[strava_index, "activity_id"]),
+                        str(matched.loc[nike_index, "activity_id"]),
+                        strava_index,
+                        nike_index,
+                    )
+                )
+
+    # A globally shortest-candidate-first pass makes matching mutually one-to-one.
+    candidates.sort(key=lambda candidate: (candidate[0], candidate[1], candidate[2]))
+    paired_indexes = set()
+    pairs = []
+    for _, _, _, strava_index, nike_index in candidates:
+        if strava_index not in paired_indexes and nike_index not in paired_indexes:
+            paired_indexes.add(strava_index)
+            paired_indexes.add(nike_index)
+            pairs.append((strava_index, nike_index))
+
+    matched["dedupe_group_id"] = [
+        f"unique_{position}" for position in range(len(matched))
+    ]
+    for pair_number, (strava_index, nike_index) in enumerate(pairs, start=1):
+        group_id = f"cross_source_{pair_number}"
+        matched.loc[strava_index, "dedupe_group_id"] = group_id
+        matched.loc[nike_index, "dedupe_group_id"] = group_id
+
+    matched = matched.drop(columns=["_match_source"])
+    return matched
+
+
+def validate_cross_source_deduplication_groups(matched_activities):
+    """Fail loudly if a group could contain more than one row from either source."""
+    if "dedupe_group_id" not in matched_activities.columns:
+        raise ValueError("Validation requires a 'dedupe_group_id' column.")
+
+    source_counts = (
+        matched_activities.groupby(
+            ["dedupe_group_id", "source"], sort=False
         )
-    WHERE row_number = 1
-""", conn)
+        .size()
+        .rename("source_count")
+    )
+    group_sizes = matched_activities.groupby(
+        "dedupe_group_id", sort=False
+    ).size()
+    offending_ids = set(group_sizes[group_sizes > 2].index.astype(str))
+    offending_ids.update(source_counts[source_counts > 1].index.get_level_values(0).astype(str))
+
+    if offending_ids:
+        raise ValueError(
+            "Cross-source deduplication validation failed for group IDs: "
+            + ", ".join(sorted(offending_ids))
+        )
+
+
+def deduplicate_by_group(matched_activities, conn):
+    """Keep one row per group using the existing Strava-first window ordering."""
+    validate_cross_source_deduplication_groups(matched_activities)
+
+    matched_activities.to_sql(
+        "combined_datasets_matched", conn, if_exists="replace", index=False
+    )
+
+    deduplicated = pd.read_sql(
+        """
+        SELECT
+            timestamp,
+            activity_id,
+            distance_miles,
+            total_time_min,
+            activity_type,
+            pace,
+            source,
+            row_number,
+            dedupe_group_id,
+            distance_bucket
+        FROM (
+            SELECT
+                timestamp,
+                activity_id,
+                distance_miles,
+                total_time_min,
+                activity_type,
+                total_time_min/distance_miles AS pace,
+                source,
+                CASE
+                    WHEN 0 <= distance_miles AND distance_miles < 3 THEN '0-3'
+                    WHEN 3 <= distance_miles AND distance_miles < 6 THEN '3-6'
+                    WHEN 6 <= distance_miles AND distance_miles < 10 THEN '6-10'
+                    ELSE '10+'
+                END AS distance_bucket,
+                dedupe_group_id,
+                ROW_NUMBER() OVER(
+                    PARTITION BY dedupe_group_id
+                    ORDER BY
+                        CASE WHEN source = 'Strava' THEN 0 ELSE 1 END
+                ) AS row_number
+            FROM combined_datasets_matched
+        )
+        WHERE row_number = 1
+        """,
+        conn,
+    )
+    return deduplicated
+
+
+combined_datasets_matched = match_cross_source_activities(combined_datasets)
+combined_datasets_final = deduplicate_by_group(combined_datasets_matched, conn)
 
 # convert timestamp datatype to datetime and go from timezone native -> aware
 combined_datasets_final['timestamp'] = pd.to_datetime(combined_datasets_final['timestamp'])
